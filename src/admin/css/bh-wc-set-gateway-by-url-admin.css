@@ -1,0 +1,10 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+
+/** Set the text field (an input) in WooCommerce settings / Payments / each gateway to blend in. */
+input[type="text"].bh_wc_set_gateway_by_url {
+    background-color: transparent;
+    border-color: transparent;
+}
