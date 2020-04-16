@@ -1,4 +1,4 @@
-[![WordPress tested 5.4](https://img.shields.io/badge/WordPress-v5.3%20tested-0073aa.svg)](https://wordpress.org/plugins/bh-wc-set-gateway-by-url) [![PHPCS WPCS](https://img.shields.io/badge/PHPCS-WordPress%20Coding%20Standards-8892BF.svg)](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards)
+[![WordPress tested 5.4](https://img.shields.io/badge/WordPress-v5.4%20tested-0073aa.svg)](https://wordpress.org/plugins/bh-wc-set-gateway-by-url) [![PHPCS WPCS](https://img.shields.io/badge/PHPCS-WordPress%20Coding%20Standards-8892BF.svg)](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards)
 
 # BH WC Set Gateway By URL
 
