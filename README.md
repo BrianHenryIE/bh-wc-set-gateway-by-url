@@ -20,11 +20,13 @@ There is no configuration needed.
 
 ## Recommendations
 
-[Cart links for WooCommerce](https://wordpress.org/plugins/soft79-cart-links-for-woocommerce/) by Soft79 plugin adds similar functionality to WooCommerce allowing adding products to customers' carts via the URL. 
+[Cart links for WooCommerce](https://wordpress.org/plugins/soft79-cart-links-for-woocommerce/) by Soft79 plugin adds similar functionality to WooCommerce allowing adding products to customers' carts via the URL, `?fill_cart=12,2x44`.
 
-[Autologin URLs](https://wordpress.org/plugins/bh-wp-autologin-urls/), also written by me, adds single-use login codes to URLs so customers can be logged in when they follow a link to your site.
+[WooCommerce Extended Coupon Features](https://wordpress.org/plugins/woocommerce-auto-added-coupons/) also by Soft79 enables applying coupons via URL, `?apply_coupon=my_coupon`.
 
-Together, it is possible to send your customers URLs to your store's checkout which fill your customers' carts, specify the payment gateway and as returning customers, have their billing and shipping information pre-filled.
+[Autologin URLs](https://wordpress.org/plugins/bh-wp-autologin-urls/), [written by me](https://github.com/BrianHenryIE/BH-WP-Autologin-URLs), adds single-use login codes to URLs so customers can be logged in when they follow a link to your site.
+
+Together, it is possible to send your customers URLs to your store's checkout which fill your customers' carts, apply a coupon, specify the payment gateway and as returning customers, have their billing and shipping information pre-filled!
 
 ## Operation
 
