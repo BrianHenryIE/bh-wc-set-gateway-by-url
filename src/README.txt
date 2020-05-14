@@ -1,4 +1,4 @@
-=== BH WC Set Gateway by URL ===
+=== Set Gateway by URL ===
 Contributors: BrianHenryIE
 Donate link: http://github.com/BrianHenryIE/bh-wc-set-gateway-by-url//
 Tags: woocommerce, payment-gateway, url
