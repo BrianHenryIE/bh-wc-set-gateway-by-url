@@ -35,7 +35,7 @@ use BH_WC_Set_Gateway_By_URL\WPPB\WPPB_Object;
  * @author     Brian Henry <BrianHenryIE@gmail.com>
  */
 class BH_WC_Set_Gateway_By_URL extends WPPB_Object {
-	
+
 	/**
 	 * Allow access for testing and unhooking.
 	 *
