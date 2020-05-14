@@ -25,10 +25,6 @@
         {
             "url": "https://github.com/BrianHenryIE/composer-phpstorm",
             "type": "git"
-        },
-        {
-            "type":"composer",
-            "url":"https://wpackagist.org"
         }
     ],
     "require": {
@@ -66,10 +62,7 @@
             "coenjacobs/mozart": {
                 "Allow default packages": "https://github.com/coenjacobs/mozart/pull/34.patch",
                 "Add config option to disable deleting vendor directories": "https://github.com/coenjacobs/mozart/pull/38.patch",
-                "Classmap replacing change str_replace to regex": "https://github.com/coenjacobs/mozart/pull/39.patch",
-                "Fixed escaping of backslash": "https://github.com/coenjacobs/mozart/pull/40.patch",
-                "Override Autoload": "https://github.com/coenjacobs/mozart/pull/41.patch",
-                "Run wide update for classmap": "https://github.com/coenjacobs/mozart/pull/42.patch"
+                "Fixed escaping of backslash": "https://github.com/coenjacobs/mozart/pull/40.patch"
             }
         },
         "mozart": {
