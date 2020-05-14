@@ -59,6 +59,9 @@
     },
     "extra": {
         "patches": {
+            "squizlabs/php_codesniffer": {
+                "Add GitHub Actions Annotations report type": "https://github.com/squizlabs/PHP_CodeSniffer/pull/2918.patch"
+            },
             "coenjacobs/mozart": {
                 "Allow default packages": "https://github.com/coenjacobs/mozart/pull/34.patch",
                 "Add config option to disable deleting vendor directories": "https://github.com/coenjacobs/mozart/pull/38.patch",
