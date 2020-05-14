@@ -18,7 +18,7 @@ checkout, that will be the selected payment gateway.
 
 A WordPress filter exists so the text in the URL can be set to whatever you prefer.
 
-[Technical detail is on GitHub](github.com/brianhenryie/bh-wc-set-gateway-by-url).
+[Technical detail is on GitHub](https://github.com/brianhenryie/bh-wc-set-gateway-by-url).
 
 == Screenshots ==
 
