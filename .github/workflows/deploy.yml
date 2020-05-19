@@ -13,7 +13,6 @@ jobs:
         uses: actions/checkout@v2
 
       - name: WordPress Plugin Deploy
-        uses: rtCamp/action-wordpress-org-plugin-deploy@master
         env:
           CUSTOM_COMMAND: composer install
           CUSTOM_PATH: src
@@ -21,3 +20,4 @@ jobs:
           SLUG: bh-wc-set-gateway-by-url
           WORDPRESS_USERNAME: ${{ secrets.WORDPRESS_USERNAME }}
           WORDPRESS_PASSWORD: ${{ secrets.WORDPRESS_PASSWORD }}
+        run: chmod +x ./.github/deploy.sh && ./.github/deploy.sh
