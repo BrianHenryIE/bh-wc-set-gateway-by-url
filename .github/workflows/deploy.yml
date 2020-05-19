@@ -12,12 +12,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Run Composer install
-        uses: php-actions/composer@v1
-
       - name: WordPress Plugin Deploy
         uses: rtCamp/action-wordpress-org-plugin-deploy@master
         env:
+          CUSTOM_COMMAND: composer install
           CUSTOM_PATH: src
           ASSETS_DIR: assets
           SLUG: bh-wc-set-gateway-by-url
