@@ -146,7 +146,7 @@ class BH_WC_Set_Gateway_By_URL extends WPPB_Object {
 		$this->loader->add_action( 'woocommerce_init', $this->woocommerce_init, 'set_payment_gateway_from_url' );
 
 		$this->woocommerce_settings_api = new Settings_API( $this->get_plugin_name(), $this->get_version() );
-		$this->loader->add_action( 'woocommerce_init', $this->woocommerce_settings_api, 'add_links_to_gateway_settings_pages' );
+		$this->loader->add_action( 'woocommerce_after_register_post_type', $this->woocommerce_settings_api, 'add_links_to_gateway_settings_pages' );
 
 	}
 
