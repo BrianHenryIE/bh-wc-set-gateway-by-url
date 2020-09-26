@@ -1,22 +1,19 @@
-# @see https://github.com/rtCamp/action-wordpress-org-plugin-deploy
+name: CI
 
-name: Deploy to WordPress.org
 on:
   push:
     tags:
-      - '*'
+      - "*.*.*"
 jobs:
-  tag:
+  build:
+
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Run Composer install
-        uses: php-actions/composer@v1
-
+      - uses: actions/checkout@master
+      - uses: php-actions/composer@master
       - name: Deploy
         run: chmod +x ./.github/deploy.sh && ./.github/deploy.sh
         env:
-          SVN_USERNAME: ${{ secrets.WORDPRESS_USERNAME }}
-          SVN_PASSWORD: ${{ secrets.WORDPRESS_PASSWORD }}
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}

@@ -21,7 +21,7 @@ class PluginsPageCest
 
     	$I->amOnPluginsPage();
 
-    	$I->canSee('BH WC Set Gateway By URL' );
+    	$I->canSee('Set Gateway By URL' );
     }
 
 }

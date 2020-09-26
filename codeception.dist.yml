@@ -25,3 +25,9 @@ coverage:
     exclude:
         - src/dependencies/*
         - src/vendor/*
+        - /*/index.php
+        - /*/*.txt
+        - src/autoload.php
+        - /*/*.css
+        - /*/*.js
+bootstrap: bootstrap.php

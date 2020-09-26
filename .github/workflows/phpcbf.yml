@@ -1,6 +1,11 @@
 name: Run PHP CodeSniffer
 
+# Run PHPCBF to fix changes then PHPCS with GitHubActionsAnnotations report
+# https://github.com/squizlabs/PHP_CodeSniffer/pull/2918
+#
 # NB: Pull requests from forks do not have access to repository secrets so cannot commit changes.
+#
+# @author BrianHenryIE
 
 on:
   push:
@@ -14,6 +19,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+#      - name: Create Composer auth.json
+#        run: php -r "file_put_contents( 'auth.json', json_encode( [ 'http-basic' => [ 'blog.brianhenry.ie' => [ 'username' => '"${{ secrets.COMPOSER_AUTH_SECRET }}"', 'password' => 'satispress' ] ] ] ) );"
+
       - name: Run Composer install
         uses: php-actions/composer@v1
 
@@ -26,6 +34,6 @@ jobs:
         with:
           commit_message: "PHPCBF"
 
-      - name: Run PHPCS to add annotations to the code
+      - name: Run PHPCS to add annotations to the commit
         continue-on-error: true
         run: vendor/bin/phpcs --report=GitHubActionsAnnotations

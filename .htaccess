@@ -1,4 +1,7 @@
 RewriteEngine on
-RewriteCond %{HTTP_HOST} ^.*bh-wp-mail-via-gmail-api$ [NC,OR]
-RewriteCond %{REQUEST_URI} !vendor/wordpress/wordpress/build/
-RewriteRule (.*) vendor/wordpress/wordpress/build/$1 [L]
+RewriteCond %{HTTP_HOST} ^.*bh-wp-set-gateway-by-url$ [NC,OR]
+RewriteCond %{REQUEST_URI} !wordpress/
+RewriteRule (.*) wordpress/$1 [L]
+
+php_flag log_errors On
+php_value error_log "wp-content/php_errors.log"
