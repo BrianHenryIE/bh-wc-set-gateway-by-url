@@ -22,7 +22,7 @@ use WC_Payment_Gateways;
  * @subpackage BH_WC_Set_Gateway_By_URL/woocommerce
  * @author     Brian Henry <BrianHenryIE@gmail.com>
  */
-class Settings_API extends WPPB_Object {
+class Settings_API {
 
 	/**
 	 * Filters each payment gateway's settings output to print out the gateway id on the WC Settings API page.

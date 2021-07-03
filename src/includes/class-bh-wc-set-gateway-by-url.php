@@ -35,35 +35,8 @@ use Psr\Log\LoggerInterface;
  * @subpackage BH_WC_Set_Gateway_By_URL/includes
  * @author     Brian Henry <BrianHenryIE@gmail.com>
  */
-class BH_WC_Set_Gateway_By_URL extends WPPB_Object {
+class BH_WC_Set_Gateway_By_URL {
 
-	/**
-	 * Allow access for testing and unhooking.
-	 *
-	 * @var Admin The plugin Admin object instance.
-	 */
-	public $admin;
-
-	/**
-	 * Allow access for testing and unhooking.
-	 *
-	 * @var WooCommerce_Init The plugin class handling WooCommerce init events.
-	 */
-	public $woocommerce_init;
-
-	/**
-	 * Allow access for testing and unhooking.
-	 *
-	 * @var Settings_API
-	 */
-	public $woocommerce_settings_api;
-
-	/**
-	 * Allow access for testing and unhooking.
-	 *
-	 * @var I18n The plugin I18n object instance.
-	 */
-	public $i18n;
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -71,9 +44,7 @@ class BH_WC_Set_Gateway_By_URL extends WPPB_Object {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      WPPB_Loader_Interface    $loader    Maintains and registers all hooks for the plugin.
 	 */
-	protected $loader;
 
 	/**
 	 * Define the core functionality of the plugin.
@@ -84,19 +55,9 @@ class BH_WC_Set_Gateway_By_URL extends WPPB_Object {
 	 *
 	 * @since    1.0.0
 	 *
-	 * @param WPPB_Loader_Interface $loader The WPPB class which adds the hooks and filters to WordPress.
 	 */
-	public function __construct( $loader ) {
-		if ( defined( 'BH_WC_SET_GATEWAY_BY_URL_VERSION' ) ) {
-			$this->version = BH_WC_SET_GATEWAY_BY_URL_VERSION;
-		} else {
-			$this->version = '1.0.0';
-		}
-		$this->plugin_name = 'bh-wc-set-gateway-by-url';
+	public function __construct( Settings_Interface $settings, LoggerInterface $logger ) {
 
-		parent::__construct( $this->plugin_name, $this->version );
-
-		$this->loader = $loader;
 
 		$this->set_locale();
 		$this->define_admin_hooks();
@@ -149,25 +110,7 @@ class BH_WC_Set_Gateway_By_URL extends WPPB_Object {
 		$this->woocommerce_settings_api = new Settings_API( $this->get_plugin_name(), $this->get_version() );
 		$this->loader->add_action( 'woocommerce_after_register_post_type', $this->woocommerce_settings_api, 'add_links_to_gateway_settings_pages' );
 
-	}
 
-	/**
-	 * Run the loader to execute all of the hooks with WordPress.
-	 *
-	 * @since    1.0.0
-	 */
-	public function run() {
-		$this->loader->run();
-	}
-
-	/**
-	 * The reference to the class that orchestrates the hooks with the plugin.
-	 *
-	 * @since     1.0.0
-	 * @return    WPPB_Loader_Interface    Orchestrates the hooks of the plugin.
-	 */
-	public function get_loader() {
-		return $this->loader;
 	}
 
 }

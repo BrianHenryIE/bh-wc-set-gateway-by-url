@@ -23,7 +23,8 @@ use WC_Payment_Gateways;
  * @subpackage BH_WC_Set_Gateway_By_URL/admin
  * @author     Brian Henry <BrianHenryIE@gmail.com>
  */
-class WooCommerce_Init extends WPPB_Object {
+class WooCommerce_Init {
+
 
 	const QUERYSTRING_PARAMETER_NAME = 'payment_gateway';
 

@@ -55,8 +55,6 @@ define( 'BH_WC_SET_GATEWAY_BY_URL_VERSION', '1.0.0' );
  */
 function instantiate_bh_wc_set_gateway_by_url() {
 
-	$loader = new WPPB_Loader();
-	$plugin = new BH_WC_Set_Gateway_By_URL( $loader );
 
 	return $plugin;
 }
@@ -67,3 +65,4 @@ function instantiate_bh_wc_set_gateway_by_url() {
  */
 $GLOBALS['bh_wc_set_gateway_by_url'] = $bh_wc_set_gateway_by_url = instantiate_bh_wc_set_gateway_by_url();
 $bh_wc_set_gateway_by_url->run();
+	new BH_WC_Set_Gateway_By_URL( $settings, $logger );

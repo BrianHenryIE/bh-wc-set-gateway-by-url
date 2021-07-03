@@ -25,7 +25,7 @@ use Psr\Log\LoggerInterface;
  * @subpackage BH_WC_Set_Gateway_By_URL/admin
  * @author     Brian Henry <BrianHenryIE@gmail.com>
  */
-class Admin extends WPPB_Object {
+class Admin {
 
 	/**
 	 * Register the stylesheets for the admin area.
