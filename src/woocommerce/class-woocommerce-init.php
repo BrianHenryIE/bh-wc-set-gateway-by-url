@@ -34,7 +34,7 @@ class WooCommerce_Init {
 	 * set the `WC()->session` `chosen_payment_method` as requested,
 	 * so the customer will reach their checkout with that gateway selected.
 	 *
-	 * @hooked woocommerce_init
+	 * @hooked woocommerce_loaded
 	 */
 	public function set_payment_gateway_from_url(): void {
 
@@ -56,6 +56,10 @@ class WooCommerce_Init {
 		if ( array_key_exists( $preferred_gateway, $payment_gateways ) ) {
 
 			WC()->session->set( 'chosen_payment_method', $preferred_gateway );
+
+			$this->logger->info( 'Set user\'s gateway to ' . $preferred_gateway );
+		} else {
+			$this->logger->info( 'Unknown gateway id specified:' . $preferred_gateway );
 		}
 
 	}
