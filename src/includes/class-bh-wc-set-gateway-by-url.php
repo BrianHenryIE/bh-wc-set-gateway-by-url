@@ -40,12 +40,11 @@ class BH_WC_Set_Gateway_By_URL {
 	use LoggerAwareTrait;
 
 	/**
-	 * The loader that's responsible for maintaining and registering all hooks that power
-	 * the plugin.
+	 * The settings object to pass to other classes.
 	 *
-	 * @since    1.0.0
-	 * @access   protected
+	 * @var Settings_Interface
 	 */
+	protected Settings_Interface $settings;
 
 	/**
 	 * Define the core functionality of the plugin.
@@ -56,11 +55,13 @@ class BH_WC_Set_Gateway_By_URL {
 	 *
 	 * @since    1.0.0
 	 *
+	 * @param Settings_Interface $settings The plugin's settings.
 	 * @param LoggerInterface    $logger A PSR logger.
 	 */
 	public function __construct( Settings_Interface $settings, LoggerInterface $logger ) {
 
 		$this->setLogger( $logger );
+		$this->settings = $settings;
 
 		$this->set_locale();
 		$this->define_admin_hooks();
@@ -75,13 +76,12 @@ class BH_WC_Set_Gateway_By_URL {
 	 * with WordPress.
 	 *
 	 * @since    1.0.0
-	 * @access   private
 	 */
-	private function set_locale() {
+	protected function set_locale(): void {
 
-		$this->i18n = $plugin_i18n = new I18n();
+		$plugin_i18n = new I18n();
 
-		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
+		add_action( 'plugins_loaded', array( $plugin_i18n, 'load_plugin_textdomain' ) );
 
 	}
 
@@ -90,9 +90,8 @@ class BH_WC_Set_Gateway_By_URL {
 	 * of the plugin.
 	 *
 	 * @since    1.0.0
-	 * @access   private
 	 */
-	private function define_admin_hooks() {
+	protected function define_admin_hooks(): void {
 
 		$admin = new Admin( $this->settings, $this->logger );
 		add_action( 'admin_enqueue_scripts', array( $admin, 'enqueue_styles' ) );
@@ -103,18 +102,16 @@ class BH_WC_Set_Gateway_By_URL {
 	 * Register all of the hooks related to woocommerce.
 	 *
 	 * @since    1.0.0
-	 * @access   private
 	 */
-	private function define_woocommerce_hooks() {
+	protected function define_woocommerce_hooks(): void {
 
-		$this->woocommerce_init = new WooCommerce_Init( $this->get_plugin_name(), $this->get_version() );
-		$this->loader->add_action( 'woocommerce_init', $this->woocommerce_init, 'set_payment_gateway_from_url' );
-
-		$this->woocommerce_settings_api = new Settings_API( $this->get_plugin_name(), $this->get_version() );
-		$this->loader->add_action( 'woocommerce_after_register_post_type', $this->woocommerce_settings_api, 'add_links_to_gateway_settings_pages' );
+		$woocommerce_init = new WooCommerce_Init();
 		$woocommerce_init->setLogger( $this->logger );
+		add_action( 'woocommerce_loaded', array( $woocommerce_init, 'set_payment_gateway_from_url' ) );
 
+		$woocommerce_settings_api = new Settings_API();
 		$woocommerce_settings_api->setLogger( $this->logger );
+		add_action( 'woocommerce_after_register_post_type', array( $woocommerce_settings_api, 'add_links_to_gateway_settings_pages' ) );
 
 	}
 
