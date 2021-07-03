@@ -111,7 +111,7 @@ class BH_WC_Set_Gateway_By_URL {
 
 		$woocommerce_settings_api = new Settings_API();
 		$woocommerce_settings_api->setLogger( $this->logger );
-		add_action( 'woocommerce_after_register_post_type', array( $woocommerce_settings_api, 'add_links_to_gateway_settings_pages' ) );
+		add_action( 'woocommerce_after_register_post_type', array( $woocommerce_settings_api, 'register_filter_on_each_gateway' ) );
 
 	}
 

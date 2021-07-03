@@ -15,56 +15,34 @@ use BrianHenryIE\WC_Set_Gateway_By_URL\Includes\BH_WC_Set_Gateway_By_URL;
  */
 class Plugin_WP_Mock_Test extends \Codeception\Test\Unit {
 
-	protected function _before() {
-		\WP_Mock::bootstrap();
+	protected function setup() : void {
+		// Because of @runInSeparateProcess.
+		require_once __DIR__ . '/../bootstrap.php';
+		require_once __DIR__ . '/_bootstrap.php';
+		// parent::setUp();
 		\WP_Mock::setUp();
 	}
 
-	/**
-	 * Verifies the plugin initialization.
-	 *
-	 * @ asd runInSeparateProcess
-	 */
-	public function test_plugin_include() {
-
-////		global $plugin_root_dir;
-		$plugin_root_dir = dirname( __DIR__, 2 ) . '/src';
-
-		\WP_Mock::userFunction(
-			'plugin_dir_path',
-			array(
-				'args'   => array( \WP_Mock\Functions::type( 'string' ) ),
-				'return' => $plugin_root_dir . '/',
-			)
-		);
-
-		\WP_Mock::userFunction(
-			'register_activation_hook'
-		);
-
-		\WP_Mock::userFunction(
-			'register_deactivation_hook'
-		);
-
-		require_once $plugin_root_dir . '/bh-wc-set-gateway-by-url.php';
-
-		$this->assertArrayHasKey( 'bh_wc_set_gateway_by_url', $GLOBALS );
-
-		$this->assertInstanceOf( BH_WC_Set_Gateway_By_URL::class, $GLOBALS['bh_wc_set_gateway_by_url'] );
-
+	public function tearDown(): void {
+		\WP_Mock::tearDown();
+		parent::tearDown();
 	}
-
 
 	/**
 	 * Verifies the plugin does not output anything to screen.
 	 *
-	 * @ asd runInSeparateProcess
+	 * @runInSeparateProcess
+	 * @preserveGlobalState disabled
 	 */
 	public function test_plugin_include_no_output() {
 
-//		global $plugin_root_dir;
-		$plugin_root_dir = dirname( __DIR__, 2 ) . '/src';
+		global $plugin_root_dir;
 
+		// Prevents code-coverage counting.
+		\Patchwork\redefine(
+			array( BH_WC_Set_Gateway_By_URL::class, '__construct' ),
+			function( $settings, $logger ) {}
+		);
 
 		\WP_Mock::userFunction(
 			'plugin_dir_path',
@@ -75,16 +53,26 @@ class Plugin_WP_Mock_Test extends \Codeception\Test\Unit {
 		);
 
 		\WP_Mock::userFunction(
-			'register_activation_hook'
+			'is_admin',
+			array(
+				'return_arg' => false,
+			)
 		);
 
 		\WP_Mock::userFunction(
-			'register_deactivation_hook'
+			'get_current_user_id'
+		);
+
+		\WP_Mock::userFunction(
+			'wp_normalize_path',
+			array(
+				'return_arg' => true,
+			)
 		);
 
 		ob_start();
 
-		require_once $plugin_root_dir . '/bh-wc-set-gateway-by-url.php';
+		include $plugin_root_dir . '/bh-wc-set-gateway-by-url.php';
 
 		$printed_output = ob_get_contents();
 

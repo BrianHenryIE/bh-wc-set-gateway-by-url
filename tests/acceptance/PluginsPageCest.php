@@ -1,12 +1,10 @@
-<?php 
+<?php
 
-class PluginsPageCest
-{
-    public function _before(AcceptanceTester $I)
-    {
-    }
+class PluginsPageCest {
 
-    //
+	public function _before( AcceptanceTester $I ) {
+	}
+
 
 	/**
 	 * Check the plugin is in the plugins.php list.
@@ -15,13 +13,13 @@ class PluginsPageCest
 	 *
 	 * @param AcceptanceTester $I
 	 */
-    public function testPluginsPageForPluginName(AcceptanceTester $I) {
+	public function testPluginsPageForPluginName( AcceptanceTester $I ) {
 
-    	$I->loginAsAdmin();
+		$I->loginAsAdmin();
 
-    	$I->amOnPluginsPage();
+		$I->amOnPluginsPage();
 
-    	$I->canSee('Set Gateway By URL' );
-    }
+		$I->canSee( 'Set Gateway By URL' );
+	}
 
 }

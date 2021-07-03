@@ -18,6 +18,6 @@ modules:
             domain: "%TEST_SITE_WP_DOMAIN%"
             adminEmail: "%TEST_SITE_ADMIN_EMAIL%"
             title: "bh-wc-set-gateway-by-url"
-            plugins: ['bh-wc-set-gateway-by-url/bh-wc-set-gateway-by-url.php']
-            activatePlugins: ['bh-wc-set-gateway-by-url/bh-wc-set-gateway-by-url.php']
+            plugins: ['bh-wc-set-gateway-by-url/bh-wc-set-gateway-by-url.php','woocommerce/woocommerce.php']
+            activatePlugins: ['bh-wc-set-gateway-by-url/bh-wc-set-gateway-by-url.php','woocommerce/woocommerce.php']
 bootstrap: _bootstrap.php
