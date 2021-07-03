@@ -9,9 +9,9 @@
  * @subpackage BH_WC_Set_Gateway_By_URL/woocommerce
  */
 
-namespace BH_WC_Set_Gateway_By_URL\woocommerce;
+namespace BrianHenryIE\WC_Set_Gateway_By_URL\WooCommerce;
 
-use BH_WC_Set_Gateway_By_URL\WPPB\WPPB_Object;
+use Psr\Log\LoggerAwareTrait;
 use WC_Payment_Gateways;
 
 /**

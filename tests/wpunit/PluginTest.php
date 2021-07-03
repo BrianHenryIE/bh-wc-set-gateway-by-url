@@ -6,9 +6,9 @@
  * @author     Brian Henry <BrianHenryIE@gmail.com>
  */
 
-namespace BH_WC_Set_Gateway_By_URL;
+namespace BrianHenryIE\WC_Set_Gateway_By_URL;
 
-use BH_WC_Set_Gateway_By_URL\includes\BH_WC_Set_Gateway_By_URL;
+use BrianHenryIE\WC_Set_Gateway_By_URL\includes\BH_WC_Set_Gateway_By_URL;
 
 /**
  * Verifies the plugin has been instantiated and added to PHP's $GLOBALS variable.

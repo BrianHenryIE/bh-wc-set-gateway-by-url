@@ -12,13 +12,14 @@
  * @subpackage BH_WC_Set_Gateway_By_URL/includes
  */
 
-namespace BH_WC_Set_Gateway_By_URL\includes;
+namespace BrianHenryIE\WC_Set_Gateway_By_URL\Includes;
 
-use BH_WC_Set_Gateway_By_URL\admin\Admin;
-use BH_WC_Set_Gateway_By_URL\woocommerce\Settings_API;
-use BH_WC_Set_Gateway_By_URL\woocommerce\WooCommerce_Init;
-use BH_WC_Set_Gateway_By_URL\WPPB\WPPB_Loader_Interface;
-use BH_WC_Set_Gateway_By_URL\WPPB\WPPB_Object;
+use BrianHenryIE\WC_Set_Gateway_By_URL\Admin\Admin;
+use BrianHenryIE\WC_Set_Gateway_By_URL\API\Settings_Interface;
+use BrianHenryIE\WC_Set_Gateway_By_URL\WooCommerce\Settings_API;
+use BrianHenryIE\WC_Set_Gateway_By_URL\WooCommerce\WooCommerce_Init;
+use Psr\Log\LoggerAwareTrait;
+use Psr\Log\LoggerInterface;
 
 /**
  * The core plugin class.

@@ -12,7 +12,7 @@
  * @subpackage BH_WC_Set_Gateway_By_URL/includes
  */
 
-namespace BH_WC_Set_Gateway_By_URL\includes;
+namespace BrianHenryIE\WC_Set_Gateway_By_URL\Includes;
 
 /**
  * Define the internationalization functionality.

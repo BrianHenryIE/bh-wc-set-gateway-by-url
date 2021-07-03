@@ -24,12 +24,11 @@
  * Domain Path:       /languages
  */
 
-namespace BH_WC_Set_Gateway_By_URL;
+namespace BrianHenryIE\WC_Set_Gateway_By_URL;
 
-use BH_WC_Set_Gateway_By_URL\includes\Activator;
-use BH_WC_Set_Gateway_By_URL\includes\Deactivator;
-use BH_WC_Set_Gateway_By_URL\includes\BH_WC_Set_Gateway_By_URL;
-use BH_WC_Set_Gateway_By_URL\WPPB\WPPB_Loader;
+use BrianHenryIE\WC_Set_Gateway_By_URL\API\Settings;
+use BrianHenryIE\WC_Set_Gateway_By_URL\Includes\BH_WC_Set_Gateway_By_URL;
+use BrianHenryIE\WC_Set_Gateway_By_URL\WP_Logger\Logger;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {

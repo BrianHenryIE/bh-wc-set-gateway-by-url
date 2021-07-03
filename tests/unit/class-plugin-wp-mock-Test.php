@@ -6,9 +6,9 @@
  * @author  Brian Henry <BrianHenryIE@gmail.com>
  */
 
-namespace BH_WC_Set_Gateway_By_URL;
+namespace BrianHenryIE\WC_Set_Gateway_By_URL;
 
-use BH_WC_Set_Gateway_By_URL\includes\BH_WC_Set_Gateway_By_URL;
+use BrianHenryIE\WC_Set_Gateway_By_URL\Includes\BH_WC_Set_Gateway_By_URL;
 
 /**
  * Class Plugin_WP_Mock_Test

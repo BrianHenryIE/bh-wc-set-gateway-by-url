@@ -9,9 +9,11 @@
  * @subpackage BH_WC_Set_Gateway_By_URL/admin
  */
 
-namespace BH_WC_Set_Gateway_By_URL\admin;
+namespace BrianHenryIE\WC_Set_Gateway_By_URL\Admin;
 
-use BH_WC_Set_Gateway_By_URL\WPPB\WPPB_Object;
+use BrianHenryIE\WC_Set_Gateway_By_URL\API\Settings_Interface;
+use Psr\Log\LoggerAwareTrait;
+use Psr\Log\LoggerInterface;
 
 /**
  * The admin-specific functionality of the plugin.

@@ -6,7 +6,7 @@
  * @author  Brian Henry <BrianHenryIE@gmail.com>
  */
 
-namespace BH_WC_Set_Gateway_By_URL\includes;
+namespace BrianHenryIE\WC_Set_Gateway_By_URL\Includes;
 
 /**
  * Class InitTest
