@@ -58,6 +58,7 @@ function instantiate_bh_wc_set_gateway_by_url() {
 
 	return $plugin;
 }
+	$logger = Logger::instance( $settings );
 
 /**
  * The core plugin class that is used to define internationalization,

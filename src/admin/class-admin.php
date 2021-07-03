@@ -27,6 +27,26 @@ use Psr\Log\LoggerInterface;
  */
 class Admin {
 
+	use LoggerAwareTrait;
+
+	/**
+	 * Required for the css handle and version.
+	 *
+	 * @var Settings_Interface
+	 */
+	protected Settings_Interface $settings;
+
+	/**
+	 * Admin constructor.
+	 *
+	 * @param Settings_Interface $settings The plugin's settings.
+	 * @param LoggerInterface    $logger A PSR logger.
+	 */
+	public function __construct( Settings_Interface $settings, LoggerInterface $logger ) {
+		$this->setLogger( $logger );
+		$this->settings = $settings;
+	}
+
 	/**
 	 * Register the stylesheets for the admin area.
 	 *

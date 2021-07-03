@@ -37,6 +37,7 @@ use Psr\Log\LoggerInterface;
  */
 class BH_WC_Set_Gateway_By_URL {
 
+	use LoggerAwareTrait;
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -55,9 +56,11 @@ class BH_WC_Set_Gateway_By_URL {
 	 *
 	 * @since    1.0.0
 	 *
+	 * @param LoggerInterface    $logger A PSR logger.
 	 */
 	public function __construct( Settings_Interface $settings, LoggerInterface $logger ) {
 
+		$this->setLogger( $logger );
 
 		$this->set_locale();
 		$this->define_admin_hooks();
@@ -91,8 +94,8 @@ class BH_WC_Set_Gateway_By_URL {
 	 */
 	private function define_admin_hooks() {
 
-		$this->admin = new Admin( $this->get_plugin_name(), $this->get_version() );
-		$this->loader->add_action( 'admin_enqueue_scripts', $this->admin, 'enqueue_styles' );
+		$admin = new Admin( $this->settings, $this->logger );
+		add_action( 'admin_enqueue_scripts', array( $admin, 'enqueue_styles' ) );
 
 	}
 
@@ -109,7 +112,9 @@ class BH_WC_Set_Gateway_By_URL {
 
 		$this->woocommerce_settings_api = new Settings_API( $this->get_plugin_name(), $this->get_version() );
 		$this->loader->add_action( 'woocommerce_after_register_post_type', $this->woocommerce_settings_api, 'add_links_to_gateway_settings_pages' );
+		$woocommerce_init->setLogger( $this->logger );
 
+		$woocommerce_settings_api->setLogger( $this->logger );
 
 	}
 

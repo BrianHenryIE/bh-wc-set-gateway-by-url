@@ -25,10 +25,16 @@
             "type": "git"
         },
         {
+            "url": "https://github.com/BrianHenryIE/admin-notices",
             "type": "git"
         },
         {
             "url": "https://github.com/BrianHenryIE/bh-wp-dev",
+            "type": "path",
+            "url":  "../bh-wp-logger/"
+        },
+        {
+            "url": "https://github.com/BrianHenryIE/bh-wp-logger",
             "type": "git"
         },
         {
@@ -43,6 +49,7 @@
     "require": {
         "php": ">=7.2",
         "pablo-sg-pacheco/wp-namespace-autoloader": "dev-master"
+        "brianhenryie/wp-logger": "dev-master",
     },
     "require-dev": {
         "10up/wp_mock": "0.4.2",

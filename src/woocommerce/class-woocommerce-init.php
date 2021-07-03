@@ -25,6 +25,7 @@ use WC_Payment_Gateways;
  */
 class WooCommerce_Init {
 
+	use LoggerAwareTrait;
 
 	const QUERYSTRING_PARAMETER_NAME = 'payment_gateway';
 

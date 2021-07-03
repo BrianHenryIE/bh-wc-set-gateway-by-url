@@ -24,6 +24,8 @@ use WC_Payment_Gateways;
  */
 class Settings_API {
 
+	use LoggerAwareTrait;
+
 	/**
 	 * Filters each payment gateway's settings output to print out the gateway id on the WC Settings API page.
 	 *
