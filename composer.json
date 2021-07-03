@@ -21,6 +21,7 @@
             "type": "git"
         },
         {
+            "url": "https://github.com/BrianHenryIE/dist-archive-command",
             "type": "git"
         },
         {
@@ -28,7 +29,6 @@
             "type": "git"
         },
         {
-            "url": "https://github.com/BrianHenryIE/bh-wp-dev",
             "type": "path",
             "url":  "../bh-wp-logger/"
         },
@@ -66,22 +66,23 @@
         "jaschilz/php-coverage-badger": "^2.0",
         "kporras07/composer-symlinks": "dev-master",
         "lucatume/wp-browser": "*",
+        "php-stubs/woocommerce-stubs": "^5.0",
         "phpcompatibility/phpcompatibility-wp": "*",
         "phpunit/phpunit": ">=7.5",
         "phpunit/phpcov": "^5.0",
         "squizlabs/php_codesniffer": "dev-master#1371c59bd5da5cfc877ab8478753362edc9bbc9b",
+        "phpstan/extension-installer": "^1.1",
+        "szepeviktor/phpstan-wordpress": "^0.7.2",
         "voku/portable-ascii": "dev-master",
         "wordpress/wordpress": ">=5.4",
         "wp-cli/wp-cli-bundle": "*",
+        "wp-cli/dist-archive-command": "dev-master",
         "wp-coding-standards/wpcs": "*",
         "wpackagist-plugin/woocommerce": "^4.5",
         "wpackagist-theme/storefront": "*"
     },
     "extra": {
         "patches": {
-            "squizlabs/php_codesniffer": {
-                "Add GitHub Actions Annotations report type": "https://github.com/squizlabs/PHP_CodeSniffer/pull/2918.patch"
-            },
             "jaschilz/php-coverage-badger": {
                 "Allow customising the text": "https://github.com/JASchilz/PHPCoverageBadge/pull/1.patch"
             }
@@ -136,6 +137,10 @@
             "mkdir -p wordpress/wp-content/uploads",
             "BrianHenryIE\\ComposerPhpStorm\\ExcludeFolders::update",
             "BrianHenryIE\\ComposerPhpStorm\\PHPUnitRunConfigurations::update"
+        "lint": [
+            "vendor/bin/phpcbf | true",
+            "vendor/bin/phpcs"
+        ],
         ]
     }
 }
