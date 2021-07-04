@@ -125,4 +125,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4.1.1
         with:
           commit_message: "🤖 Commit code coverage badge"
-          file_pattern: README.md
+          file_pattern: .github/coverage.svg
