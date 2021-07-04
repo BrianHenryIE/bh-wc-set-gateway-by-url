@@ -59,7 +59,7 @@
         "codeception/module-phpbrowser": "^1.0.0",
         "codeception/module-webdriver": "^1.0",
         "codeception/util-universalframework": "^1.0",
-        "cweagans/composer-patches": "*",
+        "cweagans/composer-patches": "dev-master",
         "dealerdirect/phpcodesniffer-composer-installer": "*",
         "jaschilz/php-coverage-badger": "^2.0",
         "kporras07/composer-symlinks": "dev-master",
