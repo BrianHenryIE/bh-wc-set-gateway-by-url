@@ -43,11 +43,11 @@ class Admin_Unit_Test  extends \Codeception\Test\Unit {
 		\WP_Mock::userFunction(
 			'plugin_dir_url',
 			array(
-				'return' => $plugin_root_dir . '/admin/',
+				'return' => $plugin_root_dir . '/Admin/',
 			)
 		);
 
-		$css_file = $plugin_root_dir . '/admin/css/bh-wc-set-gateway-by-url-admin.css';
+		$css_file = $plugin_root_dir . '/Admin/css/bh-wc-set-gateway-by-url-admin.css';
 
 		\WP_Mock::userFunction(
 			'wp_enqueue_style',
