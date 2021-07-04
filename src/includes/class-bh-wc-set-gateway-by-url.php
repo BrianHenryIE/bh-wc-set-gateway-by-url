@@ -12,13 +12,14 @@
  * @subpackage BH_WC_Set_Gateway_By_URL/includes
  */
 
-namespace BH_WC_Set_Gateway_By_URL\includes;
+namespace BrianHenryIE\WC_Set_Gateway_By_URL\Includes;
 
-use BH_WC_Set_Gateway_By_URL\admin\Admin;
-use BH_WC_Set_Gateway_By_URL\woocommerce\Settings_API;
-use BH_WC_Set_Gateway_By_URL\woocommerce\WooCommerce_Init;
-use BH_WC_Set_Gateway_By_URL\WPPB\WPPB_Loader_Interface;
-use BH_WC_Set_Gateway_By_URL\WPPB\WPPB_Object;
+use BrianHenryIE\WC_Set_Gateway_By_URL\Admin\Admin;
+use BrianHenryIE\WC_Set_Gateway_By_URL\API\Settings_Interface;
+use BrianHenryIE\WC_Set_Gateway_By_URL\WooCommerce\Settings_API;
+use BrianHenryIE\WC_Set_Gateway_By_URL\WooCommerce\WooCommerce_Init;
+use Psr\Log\LoggerAwareTrait;
+use Psr\Log\LoggerInterface;
 
 /**
  * The core plugin class.
@@ -34,45 +35,16 @@ use BH_WC_Set_Gateway_By_URL\WPPB\WPPB_Object;
  * @subpackage BH_WC_Set_Gateway_By_URL/includes
  * @author     Brian Henry <BrianHenryIE@gmail.com>
  */
-class BH_WC_Set_Gateway_By_URL extends WPPB_Object {
+class BH_WC_Set_Gateway_By_URL {
+
+	use LoggerAwareTrait;
 
 	/**
-	 * Allow access for testing and unhooking.
+	 * The settings object to pass to other classes.
 	 *
-	 * @var Admin The plugin Admin object instance.
+	 * @var Settings_Interface
 	 */
-	public $admin;
-
-	/**
-	 * Allow access for testing and unhooking.
-	 *
-	 * @var WooCommerce_Init The plugin class handling WooCommerce init events.
-	 */
-	public $woocommerce_init;
-
-	/**
-	 * Allow access for testing and unhooking.
-	 *
-	 * @var Settings_API
-	 */
-	public $woocommerce_settings_api;
-
-	/**
-	 * Allow access for testing and unhooking.
-	 *
-	 * @var I18n The plugin I18n object instance.
-	 */
-	public $i18n;
-
-	/**
-	 * The loader that's responsible for maintaining and registering all hooks that power
-	 * the plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   protected
-	 * @var      WPPB_Loader_Interface    $loader    Maintains and registers all hooks for the plugin.
-	 */
-	protected $loader;
+	protected Settings_Interface $settings;
 
 	/**
 	 * Define the core functionality of the plugin.
@@ -83,19 +55,13 @@ class BH_WC_Set_Gateway_By_URL extends WPPB_Object {
 	 *
 	 * @since    1.0.0
 	 *
-	 * @param WPPB_Loader_Interface $loader The WPPB class which adds the hooks and filters to WordPress.
+	 * @param Settings_Interface $settings The plugin's settings.
+	 * @param LoggerInterface    $logger A PSR logger.
 	 */
-	public function __construct( $loader ) {
-		if ( defined( 'BH_WC_SET_GATEWAY_BY_URL_VERSION' ) ) {
-			$this->version = BH_WC_SET_GATEWAY_BY_URL_VERSION;
-		} else {
-			$this->version = '1.0.0';
-		}
-		$this->plugin_name = 'bh-wc-set-gateway-by-url';
+	public function __construct( Settings_Interface $settings, LoggerInterface $logger ) {
 
-		parent::__construct( $this->plugin_name, $this->version );
-
-		$this->loader = $loader;
+		$this->setLogger( $logger );
+		$this->settings = $settings;
 
 		$this->set_locale();
 		$this->define_admin_hooks();
@@ -110,13 +76,12 @@ class BH_WC_Set_Gateway_By_URL extends WPPB_Object {
 	 * with WordPress.
 	 *
 	 * @since    1.0.0
-	 * @access   private
 	 */
-	private function set_locale() {
+	protected function set_locale(): void {
 
-		$this->i18n = $plugin_i18n = new I18n();
+		$plugin_i18n = new I18n();
 
-		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
+		add_action( 'plugins_loaded', array( $plugin_i18n, 'load_plugin_textdomain' ) );
 
 	}
 
@@ -125,12 +90,11 @@ class BH_WC_Set_Gateway_By_URL extends WPPB_Object {
 	 * of the plugin.
 	 *
 	 * @since    1.0.0
-	 * @access   private
 	 */
-	private function define_admin_hooks() {
+	protected function define_admin_hooks(): void {
 
-		$this->admin = new Admin( $this->get_plugin_name(), $this->get_version() );
-		$this->loader->add_action( 'admin_enqueue_scripts', $this->admin, 'enqueue_styles' );
+		$admin = new Admin( $this->settings, $this->logger );
+		add_action( 'admin_enqueue_scripts', array( $admin, 'enqueue_styles' ) );
 
 	}
 
@@ -138,35 +102,17 @@ class BH_WC_Set_Gateway_By_URL extends WPPB_Object {
 	 * Register all of the hooks related to woocommerce.
 	 *
 	 * @since    1.0.0
-	 * @access   private
 	 */
-	private function define_woocommerce_hooks() {
+	protected function define_woocommerce_hooks(): void {
 
-		$this->woocommerce_init = new WooCommerce_Init( $this->get_plugin_name(), $this->get_version() );
-		$this->loader->add_action( 'woocommerce_init', $this->woocommerce_init, 'set_payment_gateway_from_url' );
+		$woocommerce_init = new WooCommerce_Init();
+		$woocommerce_init->setLogger( $this->logger );
+		add_action( 'init', array( $woocommerce_init, 'set_payment_gateway_from_url' ) );
 
-		$this->woocommerce_settings_api = new Settings_API( $this->get_plugin_name(), $this->get_version() );
-		$this->loader->add_action( 'woocommerce_init', $this->woocommerce_settings_api, 'add_links_to_gateway_settings_pages' );
+		$woocommerce_settings_api = new Settings_API();
+		$woocommerce_settings_api->setLogger( $this->logger );
+		add_action( 'woocommerce_after_register_post_type', array( $woocommerce_settings_api, 'register_filter_on_each_gateway' ) );
 
-	}
-
-	/**
-	 * Run the loader to execute all of the hooks with WordPress.
-	 *
-	 * @since    1.0.0
-	 */
-	public function run() {
-		$this->loader->run();
-	}
-
-	/**
-	 * The reference to the class that orchestrates the hooks with the plugin.
-	 *
-	 * @since     1.0.0
-	 * @return    WPPB_Loader_Interface    Orchestrates the hooks of the plugin.
-	 */
-	public function get_loader() {
-		return $this->loader;
 	}
 
 }

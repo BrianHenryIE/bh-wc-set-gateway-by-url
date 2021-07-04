@@ -3,8 +3,10 @@ Contributors: BrianHenryIE
 Donate link: http://github.com/BrianHenryIE/bh-wc-set-gateway-by-url//
 Tags: woocommerce, payment-gateway, url
 Requires at least: 3.6.0
-Tested up to: 5.4
-Requires PHP: 7.1
+Tested up to: 5.6
+Requires PHP: 7.4
+WC requires at least: 2.2
+WC tested up to: 5.1
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -26,6 +28,9 @@ A WordPress filter exists so the text in the URL can be set to whatever you pref
 2. Demonstration link in context where it can be found
 
 == Changelog ==
+
+= 1.0.6 =
+* Bugfix: Moved to later hooks to fix WC_Order error in other plugins when WC_Payment_Gateways::instance() was run before the CPT was registered.
 
 = 1.0.5 =
 * WordPress.org deployment had missed some files

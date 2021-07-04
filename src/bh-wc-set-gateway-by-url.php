@@ -12,24 +12,25 @@
  * @package           BH_WC_Set_Gateway_By_URL
  *
  * @wordpress-plugin
- * Plugin Name:       Set Gateway By URL
- * Plugin URI:        http://github.com/BrianHenryIE/bh-wc-set-gateway-by-url/
- * Description:       Use <em>?payment_gateway=gateway_id</em> in URLs sent to customers to set the WooCommerce checkout payment gateway for them.
- * Version:           1.0.5
- * Author:            Brian Henry
- * Author URI:        https://BrianHenry.ie
- * License:           GPL-2.0+
- * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       bh-wc-set-gateway-by-url
- * Domain Path:       /languages
+ * Plugin Name:          Set Gateway By URL
+ * Plugin URI:           http://github.com/BrianHenryIE/bh-wc-set-gateway-by-url/
+ * Description:          Use <em>?payment_gateway=gateway_id</em> in URLs sent to customers to set the WooCommerce checkout payment gateway for them.
+ * Version:              1.0.6
+ * Author:               BrianHenryIE
+ * Author URI:           https://BrianHenry.ie
+ * License:              GPL-2.0+
+ * License URI:          http://www.gnu.org/licenses/gpl-2.0.txt
+ * Text Domain:          bh-wc-set-gateway-by-url
+ * Domain Path:          /languages
+ * WC requires at least: 2.2
+ * WC tested up to:      5.1
  */
 
-namespace BH_WC_Set_Gateway_By_URL;
+namespace BrianHenryIE\WC_Set_Gateway_By_URL;
 
-use BH_WC_Set_Gateway_By_URL\includes\Activator;
-use BH_WC_Set_Gateway_By_URL\includes\Deactivator;
-use BH_WC_Set_Gateway_By_URL\includes\BH_WC_Set_Gateway_By_URL;
-use BH_WC_Set_Gateway_By_URL\WPPB\WPPB_Loader;
+use BrianHenryIE\WC_Set_Gateway_By_URL\API\Settings;
+use BrianHenryIE\WC_Set_Gateway_By_URL\Includes\BH_WC_Set_Gateway_By_URL;
+use BrianHenryIE\WC_Set_Gateway_By_URL\WP_Logger\Logger;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -43,7 +44,7 @@ require_once plugin_dir_path( __FILE__ ) . 'autoload.php';
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'BH_WC_SET_GATEWAY_BY_URL_VERSION', '1.0.0' );
+define( 'BH_WC_SET_GATEWAY_BY_URL_VERSION', '1.0.6' );
 
 /**
  * Begins execution of the plugin.
@@ -54,17 +55,12 @@ define( 'BH_WC_SET_GATEWAY_BY_URL_VERSION', '1.0.0' );
  *
  * @since    1.0.0
  */
-function instantiate_bh_wc_set_gateway_by_url() {
+function instantiate_bh_wc_set_gateway_by_url(): void {
 
-	$loader = new WPPB_Loader();
-	$plugin = new BH_WC_Set_Gateway_By_URL( $loader );
+	$settings = new Settings();
 
-	return $plugin;
+	$logger = Logger::instance( $settings );
+
+	new BH_WC_Set_Gateway_By_URL( $settings, $logger );
 }
-
-/**
- * The core plugin class that is used to define internationalization,
- * admin-specific hooks, and frontend-facing site hooks.
- */
-$GLOBALS['bh_wc_set_gateway_by_url'] = $bh_wc_set_gateway_by_url = instantiate_bh_wc_set_gateway_by_url();
-$bh_wc_set_gateway_by_url->run();
+instantiate_bh_wc_set_gateway_by_url();

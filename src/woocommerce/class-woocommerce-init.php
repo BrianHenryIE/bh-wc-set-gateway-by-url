@@ -9,9 +9,9 @@
  * @subpackage BH_WC_Set_Gateway_By_URL/woocommerce
  */
 
-namespace BH_WC_Set_Gateway_By_URL\woocommerce;
+namespace BrianHenryIE\WC_Set_Gateway_By_URL\WooCommerce;
 
-use BH_WC_Set_Gateway_By_URL\WPPB\WPPB_Object;
+use Psr\Log\LoggerAwareTrait;
 use WC_Payment_Gateways;
 
 /**
@@ -23,7 +23,9 @@ use WC_Payment_Gateways;
  * @subpackage BH_WC_Set_Gateway_By_URL/admin
  * @author     Brian Henry <BrianHenryIE@gmail.com>
  */
-class WooCommerce_Init extends WPPB_Object {
+class WooCommerce_Init {
+
+	use LoggerAwareTrait;
 
 	const QUERYSTRING_PARAMETER_NAME = 'payment_gateway';
 
@@ -32,7 +34,7 @@ class WooCommerce_Init extends WPPB_Object {
 	 * set the `WC()->session` `chosen_payment_method` as requested,
 	 * so the customer will reach their checkout with that gateway selected.
 	 *
-	 * @hooked woocommerce_init
+	 * @hooked init
 	 */
 	public function set_payment_gateway_from_url(): void {
 
@@ -53,7 +55,14 @@ class WooCommerce_Init extends WPPB_Object {
 
 		if ( array_key_exists( $preferred_gateway, $payment_gateways ) ) {
 
-			WC()->session->set( 'chosen_payment_method', $preferred_gateway );
+		    $wc = WC();
+		    $session = $wc->session;
+		    $session->set( 'chosen_payment_method', $preferred_gateway );
+//			WC()->session->set( 'chosen_payment_method', $preferred_gateway );
+
+			$this->logger->info( 'Set user\'s gateway to ' . $preferred_gateway );
+		} else {
+			$this->logger->info( 'Unknown gateway id specified:' . $preferred_gateway );
 		}
 
 	}

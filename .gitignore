@@ -38,10 +38,13 @@ intermediate
 .idea
 cache
 
-/vendor/
-
-
+node_modules
+scratch
+src/strauss/
+vendor/
 wordpress
-src/vendor/
-src/dependencies/
-wp-content
+wp-content/
+
+.env.secret
+auth.json
+*.zip

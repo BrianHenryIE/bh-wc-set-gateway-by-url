@@ -12,7 +12,7 @@
  * @subpackage BH_WC_Set_Gateway_By_URL/includes
  */
 
-namespace BH_WC_Set_Gateway_By_URL\includes;
+namespace BrianHenryIE\WC_Set_Gateway_By_URL\Includes;
 
 /**
  * Define the internationalization functionality.
@@ -27,13 +27,14 @@ namespace BH_WC_Set_Gateway_By_URL\includes;
  */
 class I18n {
 
-
 	/**
 	 * Load the plugin text domain for translation.
 	 *
+	 * @hooked plugins_loaded
+	 *
 	 * @since    1.0.0
 	 */
-	public function load_plugin_textdomain() {
+	public function load_plugin_textdomain(): void {
 
 		load_plugin_textdomain(
 			'bh-wc-set-gateway-by-url',
@@ -42,7 +43,5 @@ class I18n {
 		);
 
 	}
-
-
 
 }

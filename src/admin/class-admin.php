@@ -9,9 +9,11 @@
  * @subpackage BH_WC_Set_Gateway_By_URL/admin
  */
 
-namespace BH_WC_Set_Gateway_By_URL\admin;
+namespace BrianHenryIE\WC_Set_Gateway_By_URL\Admin;
 
-use BH_WC_Set_Gateway_By_URL\WPPB\WPPB_Object;
+use BrianHenryIE\WC_Set_Gateway_By_URL\API\Settings_Interface;
+use Psr\Log\LoggerAwareTrait;
+use Psr\Log\LoggerInterface;
 
 /**
  * The admin-specific functionality of the plugin.
@@ -23,16 +25,38 @@ use BH_WC_Set_Gateway_By_URL\WPPB\WPPB_Object;
  * @subpackage BH_WC_Set_Gateway_By_URL/admin
  * @author     Brian Henry <BrianHenryIE@gmail.com>
  */
-class Admin extends WPPB_Object {
+class Admin {
+
+	use LoggerAwareTrait;
+
+	/**
+	 * Required for the css handle and version.
+	 *
+	 * @var Settings_Interface
+	 */
+	protected Settings_Interface $settings;
+
+	/**
+	 * Admin constructor.
+	 *
+	 * @param Settings_Interface $settings The plugin's settings.
+	 * @param LoggerInterface    $logger A PSR logger.
+	 */
+	public function __construct( Settings_Interface $settings, LoggerInterface $logger ) {
+		$this->setLogger( $logger );
+		$this->settings = $settings;
+	}
 
 	/**
 	 * Register the stylesheets for the admin area.
 	 *
+	 * @hooked admin_enqueue_scripts
+	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_styles() {
+	public function enqueue_styles(): void {
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/bh-wc-set-gateway-by-url-admin.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->settings->get_plugin_slug(), plugin_dir_url( __FILE__ ) . 'css/bh-wc-set-gateway-by-url-admin.css', array(), $this->settings->get_plugin_version(), 'all' );
 	}
 
 }
