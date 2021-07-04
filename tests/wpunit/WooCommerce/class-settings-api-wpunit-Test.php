@@ -8,6 +8,7 @@
 
 namespace BH_WC_Set_Gateway_By_URL\WooCommerce;
 
+use BrianHenryIE\ColorLogger\ColorLogger;
 use BrianHenryIE\WC_Set_Gateway_By_URL\WooCommerce\Settings_API;
 use BrianHenryIE\WC_Set_Gateway_By_URL\WooCommerce\WooCommerce_Init;
 use WC_Session_Handler;
@@ -25,6 +26,7 @@ class Settings_API_WPUnit_Test extends \Codeception\TestCase\WPTestCase {
 	public function test_register_filters() {
 
 		$sut = new Settings_API();
+		$sut->setLogger( new ColorLogger() );
 
 		$sut->register_filter_on_each_gateway();
 

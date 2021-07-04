@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "871a737bee1d6b1b36b303abdf9f712b",
+    "content-hash": "f9f9daf6b67102cb562ce2cf2fb0be28",
     "packages": [
         {
             "name": "brianhenryie/wp-logger",
@@ -575,6 +575,50 @@
                 "source": "https://github.com/Behat/Gherkin/tree/v4.8.0"
             },
             "time": "2021-02-04T12:44:21+00:00"
+        },
+        {
+            "name": "brianhenryie/color-logger",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/BrianHenryIE/bh-color-logger.git",
+                "reference": "cf8aeb646ab6c3306721791c73e519173b477338"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/BrianHenryIE/bh-color-logger/zipball/cf8aeb646ab6c3306721791c73e519173b477338",
+                "reference": "cf8aeb646ab6c3306721791c73e519173b477338",
+                "shasum": ""
+            },
+            "require": {
+                "psr/log": "^1.0.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9",
+                "squizlabs/php_codesniffer": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BrianHenryIE\\ColorLogger\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Brian Henry",
+                    "email": "BrianHenryIE@gmail.com"
+                }
+            ],
+            "description": "A PSR logger that prints to the console in colour. For tests.",
+            "support": {
+                "issues": "https://github.com/BrianHenryIE/bh-color-logger/issues",
+                "source": "https://github.com/BrianHenryIE/bh-color-logger/tree/1.0.0"
+            },
+            "time": "2021-06-03T04:52:26+00:00"
         },
         {
             "name": "brianhenryie/composer-phpstorm",

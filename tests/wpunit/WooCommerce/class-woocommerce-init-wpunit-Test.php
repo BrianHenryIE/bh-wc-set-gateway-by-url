@@ -8,6 +8,7 @@
 
 namespace BH_WC_Set_Gateway_By_URL\WooCommerce;
 
+use BrianHenryIE\ColorLogger\ColorLogger;
 use BrianHenryIE\WC_Set_Gateway_By_URL\WooCommerce\WooCommerce_Init;
 use WC_Session_Handler;
 use function WC;
@@ -33,6 +34,8 @@ class WooCommerce_Init_WPUnit_Test extends \Codeception\TestCase\WPTestCase {
 		$this->assertNotEquals( $default, 'cheque' );
 
 		$woocommerce_init = new WooCommerce_Init();
+		$woocommerce_init->setLogger( new ColorLogger() );
+
 		$woocommerce_init->set_payment_gateway_from_url();
 
 		$after = WC()->session->get( 'chosen_payment_method' );
@@ -54,6 +57,8 @@ class WooCommerce_Init_WPUnit_Test extends \Codeception\TestCase\WPTestCase {
 		$before = WC()->session->get( 'chosen_payment_method' );
 
 		$woocommerce_init = new WooCommerce_Init();
+		$woocommerce_init->setLogger( new ColorLogger() );
+
 		$woocommerce_init->set_payment_gateway_from_url();
 
 		$after = WC()->session->get( 'chosen_payment_method' );
@@ -75,6 +80,8 @@ class WooCommerce_Init_WPUnit_Test extends \Codeception\TestCase\WPTestCase {
 		WC()->session->set( 'chosen_payment_method', 'bacs' );
 
 		$woocommerce_init = new WooCommerce_Init();
+		$woocommerce_init->setLogger( new ColorLogger() );
+
 		$woocommerce_init->set_payment_gateway_from_url();
 
 		$after = WC()->session->get( 'chosen_payment_method' );
@@ -107,6 +114,8 @@ class WooCommerce_Init_WPUnit_Test extends \Codeception\TestCase\WPTestCase {
 		);
 
 		$woocommerce_init = new WooCommerce_Init();
+		$woocommerce_init->setLogger( new ColorLogger() );
+
 		$woocommerce_init->set_payment_gateway_from_url();
 
 		$after = WC()->session->get( 'chosen_payment_method' );

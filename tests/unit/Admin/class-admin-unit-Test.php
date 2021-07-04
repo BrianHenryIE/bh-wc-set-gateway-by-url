@@ -2,6 +2,7 @@
 
 namespace BrianHenryIE\WC_Set_Gateway_By_URL\Admin;
 
+use BrianHenryIE\ColorLogger\ColorLogger;
 use BrianHenryIE\WC_Set_Gateway_By_URL\API\Settings_Interface;
 use \Psr\Log\NullLogger;
 
@@ -27,7 +28,7 @@ class Admin_Unit_Test  extends \Codeception\Test\Unit {
 
 		global $plugin_root_dir;
 
-		$logger = new NullLogger();
+		$logger = new ColorLogger();
 
 		$settings = $this->makeEmpty(
 			Settings_Interface::class,
