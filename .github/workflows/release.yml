@@ -1,15 +1,14 @@
-name: Run PHP CodeSniffer
+name: Build and attach releases
 
-# Run PHPCBF to fix changes then annotate PHPCS
-# NB: Pull requests from forks do not have access to repository secrets so cannot commit changes.
+# for now, release name must match exactly the plugin base file's version.
 
 on:
-  push:
-    branches:
-      - master
+  release:
+    types: [published]
+
 
 jobs:
-  php-codesniffer:
+  release:
     runs-on: ubuntu-latest
 
     services:
@@ -29,6 +28,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          ref: master
 
       - name: Install PHP
         uses: shivammathur/setup-php@2.11.0
@@ -59,26 +60,43 @@ jobs:
       #      - name: Create Composer auth.json
       #        run: php -r "file_put_contents( 'auth.json', json_encode( [ 'http-basic' => [ 'blog.brianhenry.ie' => [ 'username' => '"${{ secrets.COMPOSER_AUTH_SECRET }}"', 'password' => 'satispress' ] ] ] ) );"
 
-      - name: Run composer install
-        uses: php-actions/composer@v5
-        with:
-          args: --ignore-platform-reqs
+      #      - name: Run composer install
+      #        uses: php-actions/composer@v5
+      #        with:
+      #          args: --ignore-platform-reqs
+
+      # This appends code for yahnis-elsts/plugin-update-checker at the end of the main plugin file.
+      - name: Add updater
+        env:
+          code: |
+            \n\n$updateChecker = \BH_WC_Set_Gateway_By_URL_Puc_v4_Factory::buildUpdateChecker(
+            	'https://github.com/brianhenryie/bh-wc-set-gateway-by-url/',
+            	__FILE__,
+            	'bh-wc-set-gateway-by-url'
+            );
+            $updateChecker->setBranch( 'master' );
+            $updateChecker->getVcsApi()->enableReleaseAssets();
+        run: |
+          composer require yahnis-elsts/plugin-update-checker erusev/parsedown;
+          printf "$code" >> src/bh-wc-set-gateway-by-url.php;
 
       - name: Create wpconfig ... the composer.json creation didn't work
         run: |
           export $(grep -v '^#' .env.testing | xargs);
           sudo vendor/bin/wp config create --dbname=$TEST_SITE_DB_NAME --dbuser=$TEST_SITE_DB_USER --dbpass=$TEST_SITE_DB_PASSWORD --dbhost=127.0.0.1:${{ job.services.mysql.ports['3306'] }} --allow-root --extra-php="define( 'WP_DEBUG', true ); define( 'WP_DEBUG_LOG', true );"
 
-      - name: Run PHPCBF to fix what it can
-        continue-on-error: true
-        run: vendor/bin/phpcbf
+      - name: Create plugin archive
+        run: |
+          vendor/bin/wp dist-archive src --plugin-dirname=bh-wc-set-gateway-by-url
 
-      - name: Run PHPCS to add annotations to the code
-        continue-on-error: true
-        run: vendor/bin/phpcs -q -n --report=checkstyle | cs2pr
+      # https://stackoverflow.com/questions/61256824/how-to-pass-the-output-of-a-bash-command-to-github-action-parameter
+      # echo "DIST_ARCHIVE_OUTPUT=$(vendor/bin/wp dist-archive src --plugin-dirname=bh-wp-account-and-login-ux) >> $GITHUB_ENV
+      # echo "${{ env.DIST_ARCHIVE_OUTPUT }}"
+      # Success: Created bh-wp-account-and-login-ux.0.1.1.zip
 
-      - name: Commit PHPCBF changes
-        uses: stefanzweifel/git-auto-commit-action@v4.1.1
+      - uses: meeDamian/github-release@2.0
         with:
-          file_pattern: src
-          commit_message: "🤖 PHPCBF"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          files: "bh-wc-set-gateway-by-url.${{ github.event.release.tag_name }}.zip"
+          gzip: false
+          allow_override: true

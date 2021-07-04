@@ -103,6 +103,15 @@
             },
             "namespace_replacement_patterns": {
                 "~BrianHenryIE\\\\(.*)~" : "BrianHenryIE\\WC_Set_Gateway_By_URL\\\\$1"
+            },
+            "override_autoload": {
+                "yahnis-elsts/plugin-update-checker": {
+                    "classmap": ["Puc"],
+                    "files": ["load-v4p11.php","vendor/PucReadmeParser.php"]
+                },
+                "erusev/parsedown": {
+                    "files": ["Parsedown.php"]
+                }
             }
         },
         "symlinks": {
