@@ -107,7 +107,7 @@ class BH_WC_Set_Gateway_By_URL {
 
 		$woocommerce_init = new WooCommerce_Init();
 		$woocommerce_init->setLogger( $this->logger );
-		add_action( 'woocommerce_loaded', array( $woocommerce_init, 'set_payment_gateway_from_url' ) );
+		add_action( 'init', array( $woocommerce_init, 'set_payment_gateway_from_url' ) );
 
 		$woocommerce_settings_api = new Settings_API();
 		$woocommerce_settings_api->setLogger( $this->logger );

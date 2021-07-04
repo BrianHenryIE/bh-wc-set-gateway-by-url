@@ -98,7 +98,7 @@ class BH_WC_Set_Gateway_By_URL_Unit_Test extends \Codeception\Test\Unit {
 	public function test_woocommerce_hooks() {
 
 		\WP_Mock::expectActionAdded(
-			'woocommerce_loaded',
+			'init',
 			array( new AnyInstance( WooCommerce_Init::class ), 'set_payment_gateway_from_url' )
 		);
 
