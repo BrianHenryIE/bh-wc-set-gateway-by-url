@@ -4,15 +4,15 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f9f9daf6b67102cb562ce2cf2fb0be28",
+    "content-hash": "5a844b3a372b5d37f0fd3c52d55106be",
     "packages": [
         {
             "name": "brianhenryie/wp-logger",
             "version": "dev-master",
-            "dist": {
-                "type": "path",
-                "url": "../bh-wp-logger",
-                "reference": "44103444183edf555e2504df4d5b92568c8ced72"
+            "source": {
+                "type": "git",
+                "url": "https://github.com/BrianHenryIE/bh-wp-logger",
+                "reference": "cef783a0394e6353069b44ae3cd2600745f1b481"
             },
             "require": {
                 "ext-json": "*",
@@ -52,6 +52,7 @@
                 "wpackagist-plugin/woocommerce": "*",
                 "wpackagist-theme/twentytwenty": "*"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "patches": {
@@ -124,9 +125,7 @@
                 }
             ],
             "description": "This is a short description of what plugin_title does.",
-            "transport-options": {
-                "relative": true
-            }
+            "time": "2021-07-04T04:49:42+00:00"
         },
         {
             "name": "katzgrau/klogger",
@@ -3940,16 +3939,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.10.5",
+            "version": "v4.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "4432ba399e47c66624bc73c8c0f811e5c109576f"
+                "reference": "fe14cf3672a149364fb66dfe11bf6549af899f94"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/4432ba399e47c66624bc73c8c0f811e5c109576f",
-                "reference": "4432ba399e47c66624bc73c8c0f811e5c109576f",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/fe14cf3672a149364fb66dfe11bf6549af899f94",
+                "reference": "fe14cf3672a149364fb66dfe11bf6549af899f94",
                 "shasum": ""
             },
             "require": {
@@ -3990,9 +3989,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
-                "source": "https://github.com/nikic/PHP-Parser/tree/v4.10.5"
+                "source": "https://github.com/nikic/PHP-Parser/tree/v4.11.0"
             },
-            "time": "2021-05-03T19:11:20+00:00"
+            "time": "2021-07-03T13:36:55+00:00"
         },
         {
             "name": "phar-io/manifest",
