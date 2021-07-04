@@ -45,7 +45,9 @@ class Settings_API {
 	}
 
 	/**
-	 * @param array<string|int, mixed> $form_fields
+	 * The form field to add to each settings page.
+	 *
+	 * @param array<string|int, mixed> $form_fields The gateway's existing settings.
 	 * @return array<string|int, mixed>
 	 */
 	public function add_link_to_gateway_settings_page( array $form_fields ): array {
