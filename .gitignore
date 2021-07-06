@@ -38,6 +38,10 @@ intermediate
 .idea
 cache
 
+# GitHub Actions
+DOCKER_ENV
+docker_tag
+
 node_modules
 scratch
 src/strauss/
