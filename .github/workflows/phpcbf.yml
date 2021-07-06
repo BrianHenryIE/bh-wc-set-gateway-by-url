@@ -60,7 +60,7 @@ jobs:
       #        run: php -r "file_put_contents( 'auth.json', json_encode( [ 'http-basic' => [ 'blog.brianhenry.ie' => [ 'username' => '"${{ secrets.COMPOSER_AUTH_SECRET }}"', 'password' => 'satispress' ] ] ] ) );"
 
       - name: Run composer install
-        uses: php-actions/composer@v5
+        uses: php-actions/composer@v6
         with:
           args: --ignore-platform-reqs
 
