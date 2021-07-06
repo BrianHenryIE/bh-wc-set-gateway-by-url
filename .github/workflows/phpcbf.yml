@@ -82,3 +82,4 @@ jobs:
         with:
           file_pattern: src/*
           commit_message: "🤖 PHPCBF"
+          commit_options:
