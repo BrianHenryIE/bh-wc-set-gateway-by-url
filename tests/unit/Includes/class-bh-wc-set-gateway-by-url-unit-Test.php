@@ -36,7 +36,7 @@ class BH_WC_Set_Gateway_By_URL_Unit_Test extends \Codeception\Test\Unit {
 
 	/**
 	 *
-	 * @covers \BrianHenryIE\WC_Set_Gateway_By_URL\Includes\BH_WC_Set_Gateway_By_URL::set_locale
+	 * @covers ::set_locale
 	 */
 	public function test_set_locale_hooked() {
 
@@ -52,7 +52,7 @@ class BH_WC_Set_Gateway_By_URL_Unit_Test extends \Codeception\Test\Unit {
 	}
 
 	/**
-	 * @covers \BrianHenryIE\WC_Set_Gateway_By_URL\Includes\BH_WC_Set_Gateway_By_URL::define_admin_hooks
+	 * @covers ::define_admin_hooks
 	 */
 	public function test_define_admin_hooks() {
 
@@ -93,7 +93,7 @@ class BH_WC_Set_Gateway_By_URL_Unit_Test extends \Codeception\Test\Unit {
 	// }
 
 	/**
-	 * @covers \BrianHenryIE\WC_Set_Gateway_By_URL\Includes\BH_WC_Set_Gateway_By_URL::define_woocommerce_hooks
+	 * @covers ::define_woocommerce_hooks
 	 */
 	public function test_woocommerce_hooks() {
 
