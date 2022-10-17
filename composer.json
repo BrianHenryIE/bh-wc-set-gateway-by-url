@@ -13,38 +13,44 @@
     "prefer-stable": true,
     "config": {
         "process-timeout": 0,
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/installers": true,
+            "cweagans/composer-patches": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "phpstan/extension-installer": true
+        }
     },
-    "repositories": [
-        {
+    "repositories": {
+        "brianhenryie/bh-wp-private-uploads": {
+            "type": "git",
+            "url": "https://github.com/brianhenryie/bh-wp-private-uploads"
+        },
+        "wptrt/admin-notices": {
+            "type": "git",
+            "url": "https://github.com/brianhenryie/admin-notices"
+        },
+        "brianhenryie/bh-wp-logger": {
+            "type": "git",
+            "url": "https://github.com/brianhenryie/bh-wp-logger"
+        },
+        "0": {
             "url": "https://github.com/WordPress/wordpress-develop",
             "type": "git"
         },
-        {
-            "url": "https://github.com/BrianHenryIE/dist-archive-command",
-            "type": "git"
-        },
-        {
-            "url": "https://github.com/BrianHenryIE/admin-notices",
-            "type": "git"
-        },
-        {
-            "url": "https://github.com/BrianHenryIE/bh-wp-logger",
-            "type": "git"
-        },
-        {
+        "4": {
             "url": "https://github.com/BrianHenryIE/composer-phpstorm",
             "type": "git"
         },
-        {
+        "5": {
             "type": "composer",
             "url": "https://wpackagist.org"
         }
-    ],
+    },
     "require": {
         "php": ">=7.4",
-        "brianhenryie/wp-logger": "dev-master",
-        "pablo-sg-pacheco/wp-namespace-autoloader": "*"
+        "brianhenryie/bh-wp-logger": "dev-master",
+        "pablo-sg-pacheco/wp-namespace-autoloader": "dev-master#015c9654459fd267cf12fa7846d3bf36b11c3bd7"
     },
     "require-dev": {
         "10up/wp_mock": "0.4.2",
@@ -72,7 +78,7 @@
         "szepeviktor/phpstan-wordpress": "^0.7.2",
         "voku/portable-ascii": "dev-master",
         "wordpress/wordpress": "*",
-        "wp-cli/dist-archive-command": "dev-master",
+        "wp-cli/dist-archive-command": "dev-main",
         "wp-cli/wp-cli-bundle": "*",
         "wp-coding-standards/wpcs": "*",
         "wpackagist-plugin/woocommerce": "*",
@@ -98,15 +104,22 @@
                 ]
             },
             "namespace_replacement_patterns": {
-                "~BrianHenryIE\\\\(.*)~" : "BrianHenryIE\\WC_Set_Gateway_By_URL\\\\$1"
+                "~BrianHenryIE\\\\(.*)~": "BrianHenryIE\\WC_Set_Gateway_By_URL\\\\$1"
             },
             "override_autoload": {
                 "yahnis-elsts/plugin-update-checker": {
-                    "classmap": ["Puc"],
-                    "files": ["load-v4p11.php","vendor/PucReadmeParser.php"]
+                    "classmap": [
+                        "Puc"
+                    ],
+                    "files": [
+                        "load-v4p11.php",
+                        "vendor/PucReadmeParser.php"
+                    ]
                 },
                 "erusev/parsedown": {
-                    "files": ["Parsedown.php"]
+                    "files": [
+                        "Parsedown.php"
+                    ]
                 }
             }
         },
@@ -151,7 +164,7 @@
         "save-acceptance-database": [
             "export $(grep -v '^#' .env.testing | xargs); mysqldump -u $TEST_SITE_DB_USER -p$TEST_SITE_DB_PASSWORD  $TEST_SITE_DB_NAME > tests/_data/dump.sql;"
         ],
-        "coverage-tests" :  [
+        "coverage-tests": [
             "vendor/bin/codecept run unit --coverage unit.cov;",
             "vendor/bin/codecept run wpunit --coverage wpunit.cov;",
             "vendor/bin/phpcov merge --clover tests/_output/clover.xml --html tests/_output/html tests/_output;",

@@ -29,6 +29,11 @@ A WordPress filter exists so the text in the URL can be set to whatever you pref
 
 == Changelog ==
 
+= 1.1.0 =
+
+* Also set WC_Payment_Gateway::chosen on all active gateways
+* Add payment gateway to admin order UI Customer payment page link
+
 = 1.0.6 =
 * Bugfix: Moved to later hooks to fix WC_Order error in other plugins when WC_Payment_Gateways::instance() was run before the CPT was registered.
 

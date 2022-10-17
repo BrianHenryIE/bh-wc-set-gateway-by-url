@@ -16,6 +16,7 @@ namespace BrianHenryIE\WC_Set_Gateway_By_URL\Includes;
 
 use BrianHenryIE\WC_Set_Gateway_By_URL\Admin\Admin;
 use BrianHenryIE\WC_Set_Gateway_By_URL\API\Settings_Interface;
+use BrianHenryIE\WC_Set_Gateway_By_URL\WooCommerce\Admin_Order_UI;
 use BrianHenryIE\WC_Set_Gateway_By_URL\WooCommerce\Settings_API;
 use BrianHenryIE\WC_Set_Gateway_By_URL\WooCommerce\WooCommerce_Init;
 use Psr\Log\LoggerAwareTrait;
@@ -113,6 +114,8 @@ class BH_WC_Set_Gateway_By_URL {
 		$woocommerce_settings_api->setLogger( $this->logger );
 		add_action( 'woocommerce_after_register_post_type', array( $woocommerce_settings_api, 'register_filter_on_each_gateway' ) );
 
+		$admin_order_ui = new Admin_Order_UI();
+		add_filter( 'woocommerce_get_checkout_payment_url', array( $admin_order_ui, 'add_payment_gateway_to_customer_payment_page_url' ), 10, 2 );
 	}
 
 }

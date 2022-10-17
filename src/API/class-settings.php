@@ -7,8 +7,7 @@
 
 namespace BrianHenryIE\WC_Set_Gateway_By_URL\API;
 
-use BrianHenryIE\WC_Set_Gateway_By_URL\WP_Logger\API\Logger_Settings_Interface;
-use BrianHenryIE\WC_Set_Gateway_By_URL\WP_Logger\Includes\BH_WP_Logger;
+use BrianHenryIE\WC_Set_Gateway_By_URL\WP_Logger\Logger_Settings_Interface;
 use Psr\Log\LogLevel;
 
 /**
@@ -37,7 +36,7 @@ class Settings implements Settings_Interface, Logger_Settings_Interface {
 	 * @return string
 	 */
 	public function get_plugin_version(): string {
-		return '1.0.6';
+		return '1.1.0';
 	}
 
 	/**

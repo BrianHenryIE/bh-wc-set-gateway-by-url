@@ -39,7 +39,7 @@ class WooCommerce_Init {
 	public function set_payment_gateway_from_url(): void {
 
 		// This input is not coming from a WordPress page so cannot have a nonce.
-        // phpcs:disable WordPress.Security.NonceVerification.Recommended
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended
 		if ( ! isset( $_GET[ self::QUERYSTRING_PARAMETER_NAME ] ) ) {
 
 			// Nothing to do here.
@@ -51,9 +51,14 @@ class WooCommerce_Init {
 		// To allow using shorter strings in the URL than the true gateway id.
 		$preferred_gateway = apply_filters( 'set_payment_gateway_from_url', $preferred_gateway );
 
+		/** @var array<string, \WC_Payment_Gateway> $payment_gateways */
 		$payment_gateways = WC_Payment_Gateways::instance()->payment_gateways();
 
 		if ( array_key_exists( $preferred_gateway, $payment_gateways ) ) {
+
+			foreach ( $payment_gateways as $gateway_id => $gateway ) {
+				$gateway->chosen = ( $gateway_id === $preferred_gateway );
+			}
 
 			WC()->session->set( 'chosen_payment_method', $preferred_gateway );
 
@@ -61,7 +66,5 @@ class WooCommerce_Init {
 		} else {
 			$this->logger->info( 'Unknown gateway id specified:' . $preferred_gateway );
 		}
-
 	}
-
 }
