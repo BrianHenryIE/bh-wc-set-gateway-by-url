@@ -16,9 +16,6 @@ use BrianHenryIE\WC_Set_Gateway_By_URL\Includes\BH_WC_Set_Gateway_By_URL;
 class Plugin_WP_Mock_Test extends \Codeception\Test\Unit {
 
 	protected function setup() : void {
-		// Because of @runInSeparateProcess.
-		require_once __DIR__ . '/../bootstrap.php';
-		require_once __DIR__ . '/_bootstrap.php';
 		// parent::setUp();
 		\WP_Mock::setUp();
 	}
@@ -31,8 +28,6 @@ class Plugin_WP_Mock_Test extends \Codeception\Test\Unit {
 	/**
 	 * Verifies the plugin does not output anything to screen.
 	 *
-	 * @runInSeparateProcess
-	 * @preserveGlobalState disabled
 	 */
 	public function test_plugin_include_no_output() {
 
