@@ -72,8 +72,8 @@ jobs:
         run: |
           composer create-plugin-archive
           echo $(ls -Art dist-archive/*.zip | tail -n 1)
-          echo "{DIST_ARCHIVE_RELATIVE_FILEPATH}={$(ls -Art dist-archive/*.zip | tail -n 1)}" >> $GITHUB_OUTPUT;
-          echo "{DIST_ARCHIVE_ABSOLUTE_FILEPATH}={$(pwd)/$(ls -Art dist-archive/*.zip | tail -n 1)}" >> $GITHUB_OUTPUT;
+          echo "DIST_ARCHIVE_RELATIVE_FILEPATH=$(ls -Art dist-archive/*.zip | tail -n 1)" >> $GITHUB_OUTPUT;
+          echo "DIST_ARCHIVE_ABSOLUTE_FILEPATH=$(pwd)/$(ls -Art dist-archive/*.zip | tail -n 1)" >> $GITHUB_OUTPUT;
 
       - name: Debug workflow
         run: echo "The selected color is ${{ steps.create-plugin-archive.outputs.DIST_ARCHIVE_ABSOLUTE_FILEPATH }}"
