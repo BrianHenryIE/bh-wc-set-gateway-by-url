@@ -16,6 +16,7 @@
  * Plugin URI:           http://github.com/BrianHenryIE/bh-wc-set-gateway-by-url/
  * Description:          Use <em>?payment_gateway=gateway_id</em> in URLs sent to customers to set the WooCommerce checkout payment gateway for them.
  * Version:              1.1.4
+ * Requires PHP:         7.4
  * Author:               BrianHenryIE
  * Author URI:           https://BrianHenry.ie
  * License:              GPL-2.0+
