@@ -9,6 +9,7 @@ namespace BrianHenryIE\WC_Set_Gateway_By_URL\API;
 
 use BrianHenryIE\WC_Set_Gateway_By_URL\Admin\Admin_Assets;
 use BrianHenryIE\WC_Set_Gateway_By_URL\Settings_Interface;
+use BrianHenryIE\WC_Set_Gateway_By_URL\WooCommerce\WooCommerce_Init;
 use BrianHenryIE\WC_Set_Gateway_By_URL\WP_Logger\Logger_Settings_Interface;
 use Psr\Log\LogLevel;
 
@@ -16,6 +17,8 @@ use Psr\Log\LogLevel;
  * Class Settings
  */
 class Settings implements Settings_Interface, Logger_Settings_Interface {
+
+	const LOG_LEVEL_OPTION_NAME = 'bh_wc_set_gateway_by_url_log_level';
 
 	/**
 	 * The plugin slug for CSS handle.
@@ -43,13 +46,15 @@ class Settings implements Settings_Interface, Logger_Settings_Interface {
 
 	/**
 	 * The log detail level.
+	 * There's no UI to configure this, but get_option's filters can be used to control it.
 	 *
 	 * @used-by BH_WP_Logger
+	 * @see WooCommerce_Init::set_payment_gateway_from_url()
 	 *
 	 * @return string
 	 */
 	public function get_log_level(): string {
-		return LogLevel::INFO;
+		return get_option( self::LOG_LEVEL_OPTION_NAME, LogLevel::INFO );
 	}
 
 	/**

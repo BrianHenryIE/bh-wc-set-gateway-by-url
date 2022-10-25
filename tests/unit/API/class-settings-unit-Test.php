@@ -3,12 +3,18 @@
 namespace BrianHenryIE\WC_Set_Gateway_By_URL\API;
 
 /**
- * Class Settings_Unit_Test
- *
- * @package brianhenryie/bh-wc-set-gateway-by-url
  * @coversDefaultClass \BrianHenryIE\WC_Set_Gateway_By_URL\API\Settings
  */
 class Settings_Unit_Test extends \Codeception\Test\Unit {
+
+	protected function setup() : void {
+		\WP_Mock::setUp();
+	}
+
+	public function tearDown(): void {
+		\WP_Mock::tearDown();
+		parent::tearDown();
+	}
 
 	/**
 	 * @covers ::get_plugin_slug
@@ -35,5 +41,24 @@ class Settings_Unit_Test extends \Codeception\Test\Unit {
 		$sut = new Settings();
 
 		$this->assertEquals( 'Set Gateway by URL', $sut->get_plugin_name() );
+	}
+
+	/**
+	 * @covers ::get_log_level
+	 */
+	public function test_get_log_level(): void {
+
+		\WP_Mock::userFunction(
+			'get_option',
+			array(
+				'times'  => 1,
+				'args'   => array( 'bh_wc_set_gateway_by_url_log_level', 'info' ),
+				'return' => 'info',
+			)
+		);
+
+		$sut = new Settings();
+
+		$this->assertEquals( 'info', $sut->get_log_level() );
 	}
 }
