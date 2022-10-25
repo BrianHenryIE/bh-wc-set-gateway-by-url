@@ -2,16 +2,12 @@
 
 class PluginsPageCest {
 
-	public function _before( AcceptanceTester $I ) {
-	}
-
-
 	/**
 	 * Check the plugin is in the plugins.php list.
 	 * For local dev environment, verifies the symlink is correct.
 	 * Verifies the name is unchanged.
 	 *
-	 * @param AcceptanceTester $I
+	 * @param AcceptanceTester $I The CodeCeption actor.
 	 */
 	public function testPluginsPageForPluginName( AcceptanceTester $I ) {
 

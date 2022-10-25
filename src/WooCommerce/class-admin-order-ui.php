@@ -12,6 +12,9 @@ namespace BrianHenryIE\WC_Set_Gateway_By_URL\WooCommerce;
 
 use WC_Order;
 
+/**
+ * If the payment method has been set, it is added to the customer URL.
+ */
 class Admin_Order_UI {
 
 	/**

@@ -2,14 +2,9 @@
 
 class VerifyGatewayCest {
 
-	public function _before( AcceptanceTester $I ) {
-
-	}
-
-
 	/**
 	 *
-	 * @param AcceptanceTester $I
+	 * @param AcceptanceTester $I The CodeCeption actor.
 	 */
 	public function testSetGatewayOnCheckout( AcceptanceTester $I ) {
 
@@ -31,8 +26,7 @@ class VerifyGatewayCest {
 	}
 
 	/**
-	 *
-	 * @param AcceptanceTester $I
+	 * @param AcceptanceTester $I The CodeCeption actor.
 	 */
 	public function testSetGatewayOnHome( AcceptanceTester $I ) {
 

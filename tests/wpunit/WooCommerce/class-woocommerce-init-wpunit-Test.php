@@ -6,7 +6,7 @@
  * @author  Brian Henry <BrianHenryIE@gmail.com>
  */
 
-namespace BH_WC_Set_Gateway_By_URL\WooCommerce;
+namespace BrianHenryIE\WC_Set_Gateway_By_URL\WooCommerce;
 
 use BrianHenryIE\ColorLogger\ColorLogger;
 use BrianHenryIE\WC_Set_Gateway_By_URL\WooCommerce\WooCommerce_Init;
@@ -21,7 +21,7 @@ use function WC;
 class WooCommerce_Init_WPUnit_Test extends \Codeception\TestCase\WPTestCase {
 
 	/**
-	 *
+	 * @covers ::set_payment_gateway_from_url
 	 */
 	public function test_action_woocommerce_init_set_payment_gateway_from_url() {
 
@@ -33,20 +33,18 @@ class WooCommerce_Init_WPUnit_Test extends \Codeception\TestCase\WPTestCase {
 
 		$this->assertNotEquals( $default, 'cheque' );
 
-		$woocommerce_init = new WooCommerce_Init();
-		$woocommerce_init->setLogger( new ColorLogger() );
+		$sut = new WooCommerce_Init();
+		$sut->setLogger( new ColorLogger() );
 
-		$woocommerce_init->set_payment_gateway_from_url();
+		$sut->set_payment_gateway_from_url();
 
 		$after = WC()->session->get( 'chosen_payment_method' );
 
 		$this->assertEquals( $after, 'cheque' );
-
 	}
 
-
 	/**
-	 *
+	 * @covers ::set_payment_gateway_from_url
 	 */
 	public function test_change_nothing_with_unknown_gateway() {
 
@@ -64,12 +62,10 @@ class WooCommerce_Init_WPUnit_Test extends \Codeception\TestCase\WPTestCase {
 		$after = WC()->session->get( 'chosen_payment_method' );
 
 		$this->assertEquals( $before, $after );
-
 	}
 
-
 	/**
-	 *
+	 * @covers ::set_payment_gateway_from_url
 	 */
 	public function test_change_nothing_without_querystring() {
 
@@ -87,12 +83,10 @@ class WooCommerce_Init_WPUnit_Test extends \Codeception\TestCase\WPTestCase {
 		$after = WC()->session->get( 'chosen_payment_method' );
 
 		$this->assertEquals( 'bacs', $after );
-
 	}
 
-
 	/**
-	 *
+	 * @covers ::set_payment_gateway_from_url
 	 */
 	public function test_filter() {
 
@@ -121,6 +115,5 @@ class WooCommerce_Init_WPUnit_Test extends \Codeception\TestCase\WPTestCase {
 		$after = WC()->session->get( 'chosen_payment_method' );
 
 		$this->assertEquals( 'cheque', $after );
-
 	}
 }

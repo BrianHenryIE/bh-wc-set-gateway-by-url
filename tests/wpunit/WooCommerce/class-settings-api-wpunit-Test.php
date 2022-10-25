@@ -6,7 +6,7 @@
  * @author  Brian Henry <BrianHenryIE@gmail.com>
  */
 
-namespace BH_WC_Set_Gateway_By_URL\WooCommerce;
+namespace BrianHenryIE\WC_Set_Gateway_By_URL\WooCommerce;
 
 use BrianHenryIE\ColorLogger\ColorLogger;
 use BrianHenryIE\WC_Set_Gateway_By_URL\WooCommerce\Settings_API;
@@ -15,7 +15,6 @@ use WC_Session_Handler;
 use function WC;
 
 /**
- *
  * @coversDefaultClass \BrianHenryIE\WC_Set_Gateway_By_URL\WooCommerce\Settings_API
  */
 class Settings_API_WPUnit_Test extends \Codeception\TestCase\WPTestCase {

@@ -12,7 +12,6 @@ use \Psr\Log\NullLogger;
 class Settings_API_Unit_Test  extends \Codeception\Test\Unit {
 
 	protected function setup() : void {
-		// parent::setUp();
 		\WP_Mock::setUp();
 	}
 

@@ -11,6 +11,7 @@
 namespace BrianHenryIE\WC_Set_Gateway_By_URL\WooCommerce;
 
 use Psr\Log\LoggerAwareTrait;
+use WC_Payment_Gateway;
 use WC_Payment_Gateways;
 
 /**
@@ -50,7 +51,12 @@ class WooCommerce_Init {
 		// To allow using shorter strings in the URL than the true gateway id.
 		$preferred_gateway = apply_filters( 'set_payment_gateway_from_url', $preferred_gateway );
 
-		/** @var array<string, \WC_Payment_Gateway> $payment_gateways */
+		/**
+		 * The available WooCommerce gateways.
+		 * I.e. the chosen one might now be available.
+		 *
+		 * @var array<string, WC_Payment_Gateway> $payment_gateways
+		 */
 		$payment_gateways = WC_Payment_Gateways::instance()->payment_gateways();
 
 		if ( array_key_exists( $preferred_gateway, $payment_gateways ) ) {

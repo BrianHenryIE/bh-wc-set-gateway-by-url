@@ -15,14 +15,13 @@ use BrianHenryIE\WC_Set_Gateway_By_URL\WP_Includes\BH_WC_Set_Gateway_By_URL;
  */
 class Plugin_Unit_Test extends \Codeception\Test\Unit {
 
-	protected function setup() : void {
-		// parent::setUp();
+	protected function setup(): void {
 		\WP_Mock::setUp();
 	}
 
-	public function tearDown(): void {
+	protected function tearDown(): void {
 		\WP_Mock::tearDown();
-		parent::tearDown();
+		\Patchwork\restoreAll();
 	}
 
 	/**

@@ -20,17 +20,17 @@ use WP_Mock\Matcher\AnyInstance;
  */
 class BH_WC_Set_Gateway_By_URL_Unit_Test extends \Codeception\Test\Unit {
 
-	protected function _before() {
+	protected function setup(): void {
+		parent::setup();
 		\WP_Mock::setUp();
 	}
 
-	public function _after() {
-		parent::_after();
+	protected function tearDown(): void {
+		parent::tearDown();
 		\WP_Mock::tearDown();
 	}
 
 	/**
-	 *
 	 * @covers ::set_locale
 	 */
 	public function test_set_locale_hooked() {
