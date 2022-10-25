@@ -73,8 +73,8 @@ jobs:
 
       - name: Save archive filepath
         run: |
-          echo DIST_ARCHIVE_RELATIVE_FILEPATH=$(ls -Art dist-archive/*.zip | tail -n 1) >> $GITHUB_STATE;
-          echo DIST_ARCHIVE_ABSOLUTE_FILEPATH=$(pwd)/$(ls -Art dist-archive/*.zip | tail -n 1) >> $GITHUB_STATE;
+          echo "{DIST_ARCHIVE_RELATIVE_FILEPATH}={$(ls -Art dist-archive/*.zip | tail -n 1)}" >> $GITHUB_STATE;
+          echo "{DIST_ARCHIVE_ABSOLUTE_FILEPATH}={$(pwd)/$(ls -Art dist-archive/*.zip | tail -n 1)}" >> $GITHUB_STATE;
 
       - name: Debug workflow
         run: |
