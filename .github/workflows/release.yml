@@ -78,12 +78,12 @@ jobs:
 
       - name: Debug workflow
         run: |
-          e;cho ${{ env.DIST_ARCHIVE_ABSOLUTE_FILEPATH }};
+          echo ${{ env.DIST_ARCHIVE_ABSOLUTE_FILEPATH }};
           echo ${{ env.DIST_ARCHIVE_RELATIVE_FILEPATH }};
 
       - uses: meeDamian/github-release@2.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          files: ${{ env.DIST_ARCHIVE_FILEPATH }}
+          files: ${{ env.DIST_ARCHIVE_RELATIVE_FILEPATH }}
           gzip: false
           allow_override: true
