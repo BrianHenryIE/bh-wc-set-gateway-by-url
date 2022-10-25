@@ -1,5 +1,9 @@
 # BH WC Set Gateway By URL
 
+= 1.1.2 =
+
+* Update GitHub Actions release script
+
 = 1.1.1 = 24-Oct-2022
 
 * Update project structure
