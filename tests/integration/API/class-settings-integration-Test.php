@@ -5,7 +5,7 @@ namespace BrianHenryIE\WC_Set_Gateway_By_URL\API;
 /**
  * Class Settings_Integration_Test
  *
- * @package BrianHenryIE\WC_Set_Gateway_By_URL\API
+ * @package brianhenryie/bh-wc-set-gateway-by-url
  * @coversDefaultClass \BrianHenryIE\WC_Set_Gateway_By_URL\API\Settings
  */
 class Settings_Integration_Test extends \Codeception\TestCase\WPTestCase {

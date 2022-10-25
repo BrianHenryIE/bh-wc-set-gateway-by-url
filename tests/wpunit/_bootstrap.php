@@ -2,7 +2,7 @@
 /**
  * PHPUnit bootstrap file for wpunit tests. Since the plugin will not be otherwise autoloaded.
  *
- * @package           BH_WC_Set_Gateway_By_URL
+ * @package brianhenryie/bh-wc-set-gateway-by-url
  */
 
 global $plugin_root_dir;

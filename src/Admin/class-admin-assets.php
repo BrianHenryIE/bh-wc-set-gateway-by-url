@@ -5,13 +5,12 @@
  * @link       http://github.com/BrianHenryIE/bh-wc-set-gateway-by-url/
  * @since      1.0.0
  *
- * @package    BH_WC_Set_Gateway_By_URL
- * @subpackage BH_WC_Set_Gateway_By_URL/admin
+ * @package brianhenryie/bh-wc-set-gateway-by-url
  */
 
 namespace BrianHenryIE\WC_Set_Gateway_By_URL\Admin;
 
-use BrianHenryIE\WC_Set_Gateway_By_URL\API\Settings_Interface;
+use BrianHenryIE\WC_Set_Gateway_By_URL\Settings_Interface;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\LoggerInterface;
 
@@ -21,11 +20,11 @@ use Psr\Log\LoggerInterface;
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
- * @package    BH_WC_Set_Gateway_By_URL
- * @subpackage BH_WC_Set_Gateway_By_URL/admin
+ * @package brianhenryie/bh-wc-set-gateway-by-url
+ *
  * @author     Brian Henry <BrianHenryIE@gmail.com>
  */
-class Admin {
+class Admin_Assets {
 
 	use LoggerAwareTrait;
 
@@ -56,7 +55,7 @@ class Admin {
 	 */
 	public function enqueue_styles(): void {
 
-		wp_enqueue_style( $this->settings->get_plugin_slug(), plugin_dir_url( __FILE__ ) . 'css/bh-wc-set-gateway-by-url-admin.css', array(), $this->settings->get_plugin_version(), 'all' );
+		wp_enqueue_style( $this->settings->get_plugin_slug(), plugin_dir_url( $this->settings->get_plugin_basename() ) . '/assets/bh-wc-set-gateway-by-url-admin.css', array(), $this->settings->get_plugin_version(), 'all' );
 	}
 
 }

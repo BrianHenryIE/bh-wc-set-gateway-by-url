@@ -2,16 +2,16 @@
 /**
  * Tests for I18n. Tests load_plugin_textdomain.
  *
- * @package BH_WC_Set_Gateway_By_URL
+ * @package brianhenryie/bh-wc-set-gateway-by-url
  * @author  Brian Henry <BrianHenryIE@gmail.com>
  */
 
-namespace BrianHenryIE\WC_Set_Gateway_By_URL\Includes;
+namespace BrianHenryIE\WC_Set_Gateway_By_URL\WP_Includes;
 
 /**
  * Class I18n_Unit_Test
  *
- * @covers \BrianHenryIE\WC_Set_Gateway_By_URL\Includes\I18n
+ * @covers \BrianHenryIE\WC_Set_Gateway_By_URL\WP_Includes\I18n
  */
 class I18n_Unit_Test extends \Codeception\TestCase\WPTestCase {
 

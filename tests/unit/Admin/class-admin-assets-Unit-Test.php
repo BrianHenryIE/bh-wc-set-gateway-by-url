@@ -3,16 +3,13 @@
 namespace BrianHenryIE\WC_Set_Gateway_By_URL\Admin;
 
 use BrianHenryIE\ColorLogger\ColorLogger;
-use BrianHenryIE\WC_Set_Gateway_By_URL\API\Settings_Interface;
+use BrianHenryIE\WC_Set_Gateway_By_URL\Settings_Interface;
 use \Psr\Log\NullLogger;
 
 /**
- * Class Admin_Unit_Test
- *
- * @package BrianHenryIE\WC_Set_Gateway_By_URL\Admin
- * @coversDefaultClass \BrianHenryIE\WC_Set_Gateway_By_URL\Admin\Admin
+ * @coversDefaultClass \BrianHenryIE\WC_Set_Gateway_By_URL\Admin\Admin_Assets
  */
-class Admin_Unit_Test  extends \Codeception\Test\Unit {
+class Admin_Assets_Unit_Test  extends \Codeception\Test\Unit {
 
 	protected function setup() : void {
 		// parent::setUp();
@@ -38,22 +35,23 @@ class Admin_Unit_Test  extends \Codeception\Test\Unit {
 			)
 		);
 
-		$sut = new Admin( $settings, $logger );
+		$sut = new Admin_Assets( $settings, $logger );
 
 		\WP_Mock::userFunction(
 			'plugin_dir_url',
 			array(
-				'return' => $plugin_root_dir . '/Admin/',
+				'return' => 'http://example.org/wp-content/plugins/bh-wc-set-gateway-by-url',
 			)
 		);
 
-		$css_file = $plugin_root_dir . '/Admin/css/bh-wc-set-gateway-by-url-admin.css';
+		$css_file = $plugin_root_dir . '/assets/bh-wc-set-gateway-by-url-admin.css';
+		$css_url = 'http://example.org/wp-content/plugins/bh-wc-set-gateway-by-url/assets/bh-wc-set-gateway-by-url-admin.css';
 
 		\WP_Mock::userFunction(
 			'wp_enqueue_style',
 			array(
 				'times' => 1,
-				'args'  => array( 'bh-wc-set-gateway-by-url', $css_file, array(), '1.0.0', 'all' ),
+				'args'  => array( 'bh-wc-set-gateway-by-url', $css_url, array(), '1.0.0', 'all' ),
 			)
 		);
 

@@ -6,8 +6,7 @@
  * @link       http://github.com/BrianHenryIE/bh-wc-set-gateway-by-url/
  * @since      1.0.0
  *
- * @package    BH_WC_Set_Gateway_By_URL
- * @subpackage BH_WC_Set_Gateway_By_URL/woocommerce
+ * @package brianhenryie/bh-wc-set-gateway-by-url
  */
 
 namespace BrianHenryIE\WC_Set_Gateway_By_URL\WooCommerce;
@@ -19,8 +18,8 @@ use WC_Payment_Gateways;
  * Runs on woocommerce_loaded (init was too early) to find the list of gateways, then registers its function
  * to add instructions to each payment gateway's settings page.
  *
- * @package    BH_WC_Set_Gateway_By_URL
- * @subpackage BH_WC_Set_Gateway_By_URL/woocommerce
+ * @package brianhenryie/bh-wc-set-gateway-by-url
+ *
  * @author     Brian Henry <BrianHenryIE@gmail.com>
  */
 class Settings_API {

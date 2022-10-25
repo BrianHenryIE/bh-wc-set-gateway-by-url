@@ -9,7 +9,7 @@
  *
  * @link              http://github.com/BrianHenryIE/bh-wc-set-gateway-by-url/
  * @since             1.0.0
- * @package           BH_WC_Set_Gateway_By_URL
+ * @package brianhenryie/bh-wc-set-gateway-by-url
  *
  * @wordpress-plugin
  * Plugin Name:          Set Gateway By URL
@@ -29,7 +29,6 @@
 namespace BrianHenryIE\WC_Set_Gateway_By_URL;
 
 use BrianHenryIE\WC_Set_Gateway_By_URL\API\Settings;
-use BrianHenryIE\WC_Set_Gateway_By_URL\Includes\BH_WC_Set_Gateway_By_URL;
 use BrianHenryIE\WC_Set_Gateway_By_URL\WP_Logger\Logger;
 
 // If this file is called directly, abort.
@@ -45,6 +44,7 @@ require_once plugin_dir_path( __FILE__ ) . 'autoload.php';
  * Rename this for your plugin and update it as you release new versions.
  */
 define( 'BH_WC_SET_GATEWAY_BY_URL_VERSION', '1.1.0' );
+define( 'BH_WC_SET_GATEWAY_BY_URL_BASENAME', plugin_basename( __FILE__ ) );
 
 /**
  * Begins execution of the plugin.

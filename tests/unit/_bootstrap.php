@@ -2,7 +2,7 @@
 /**
  * PHPUnit bootstrap file for WP_Mock.
  *
- * @package           BH_WC_Set_Gateway_By_URL
+ * @package brianhenryie/bh-wc-set-gateway-by-url
  */
 
 WP_Mock::setUsePatchwork( true );

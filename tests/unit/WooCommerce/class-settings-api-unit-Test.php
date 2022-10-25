@@ -2,7 +2,7 @@
 
 namespace BrianHenryIE\WC_Set_Gateway_By_URL\WP_Logger\WooCommerce;
 
-use BrianHenryIE\WC_Set_Gateway_By_URL\API\Settings_Interface;
+use BrianHenryIE\WC_Set_Gateway_By_URL\Settings_Interface;
 use BrianHenryIE\WC_Set_Gateway_By_URL\WooCommerce\Settings_API;
 use \Psr\Log\NullLogger;
 

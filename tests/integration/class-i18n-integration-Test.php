@@ -2,11 +2,11 @@
 /**
  * Tests for I18n. Tests load_plugin_textdomain.
  *
- * @package BH_WC_Set_Gateway_By_URL
+ * @package brianhenryie/bh-wc-set-gateway-by-url
  * @author  Brian Henry <BrianHenryIE@gmail.com>
  */
 
-namespace BrianHenryIE\WC_Set_Gateway_By_URL\Includes;
+namespace BrianHenryIE\WC_Set_Gateway_By_URL\WP_Includes;
 
 /**
  * Class I18n_Integration_Test

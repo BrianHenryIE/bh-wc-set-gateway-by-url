@@ -2,13 +2,13 @@
 /**
  * Tests for the root plugin file.
  *
- * @package BH_WC_Set_Gateway_By_URL
+ * @package brianhenryie/bh-wc-set-gateway-by-url
  * @author  Brian Henry <BrianHenryIE@gmail.com>
  */
 
 namespace BrianHenryIE\WC_Set_Gateway_By_URL;
 
-use BrianHenryIE\WC_Set_Gateway_By_URL\Includes\BH_WC_Set_Gateway_By_URL;
+use BrianHenryIE\WC_Set_Gateway_By_URL\WP_Includes\BH_WC_Set_Gateway_By_URL;
 
 /**
  * Class Plugin_WP_Mock_Test
@@ -27,7 +27,6 @@ class Plugin_Unit_Test extends \Codeception\Test\Unit {
 
 	/**
 	 * Verifies the plugin does not output anything to screen.
-	 *
 	 */
 	public function test_plugin_include_no_output() {
 
@@ -35,7 +34,7 @@ class Plugin_Unit_Test extends \Codeception\Test\Unit {
 
 		// Prevents code-coverage counting.
 		\Patchwork\redefine(
-			array( BH_WC_Set_Gateway_By_URL::class , '__construct' ),
+			array( BH_WC_Set_Gateway_By_URL::class, '__construct' ),
 			function( $settings, $logger ) {}
 		);
 

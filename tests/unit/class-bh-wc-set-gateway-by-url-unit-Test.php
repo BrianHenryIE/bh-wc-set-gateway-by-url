@@ -1,31 +1,26 @@
 <?php
 /**
  *
- * @package BrianHenryIE\WC_Set_Gateway_By_URL
+ * @package brianhenryie/bh-wc-set-gateway-by-url
  * @author  Brian Henry <BrianHenryIE@gmail.com>
  */
 
-namespace BrianHenryIE\WC_Set_Gateway_By_URL\Includes;
+namespace BrianHenryIE\WC_Set_Gateway_By_URL;
 
-use BrianHenryIE\WC_Set_Gateway_By_URL\Admin\Admin;
-use BrianHenryIE\WC_Set_Gateway_By_URL\API\Settings_Interface;
+use BrianHenryIE\WC_Set_Gateway_By_URL\Admin\Admin_Assets;
+use BrianHenryIE\WC_Set_Gateway_By_URL\Settings_Interface;
 use BrianHenryIE\WC_Set_Gateway_By_URL\WooCommerce\Settings_API;
 use BrianHenryIE\WC_Set_Gateway_By_URL\WooCommerce\WooCommerce_Init;
+use BrianHenryIE\WC_Set_Gateway_By_URL\WP_Includes\I18n;
 use Psr\Log\NullLogger;
 use WP_Mock\Matcher\AnyInstance;
 
 /**
- * @covers \BrianHenryIE\WC_Set_Gateway_By_URL\Includes\BH_WC_Set_Gateway_By_URL
- *
- * Class BH_WC_Set_Gateway_By_URL_Unit_Test
- * @package BrianHenryIE\WC_Set_Gateway_By_URL\Includes
- * @coversDefaultClass \BrianHenryIE\WC_Set_Gateway_By_URL\Includes\BH_WC_Set_Gateway_By_URL
+ * @coversDefaultClass \BrianHenryIE\WC_Set_Gateway_By_URL\BH_WC_Set_Gateway_By_URL
  */
 class BH_WC_Set_Gateway_By_URL_Unit_Test extends \Codeception\Test\Unit {
 
 	protected function _before() {
-		require_once __DIR__ . '/../../bootstrap.php';
-		require_once __DIR__ . '/../_bootstrap.php';
 		\WP_Mock::setUp();
 	}
 
@@ -58,7 +53,7 @@ class BH_WC_Set_Gateway_By_URL_Unit_Test extends \Codeception\Test\Unit {
 
 		\WP_Mock::expectActionAdded(
 			'admin_enqueue_scripts',
-			array( new AnyInstance( Admin::class ), 'enqueue_styles' )
+			array( new AnyInstance( Admin_Assets::class ), 'enqueue_styles' )
 		);
 
 		$settings = $this->makeEmpty( Settings_Interface::class );

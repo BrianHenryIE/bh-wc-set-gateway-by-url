@@ -8,17 +8,17 @@
  * @link       http://github.com/BrianHenryIE/bh-wc-set-gateway-by-url/
  * @since      1.0.0
  *
- * @package    BH_WC_Set_Gateway_By_URL
- * @subpackage BH_WC_Set_Gateway_By_URL/includes
+ * @package brianhenryie/bh-wc-set-gateway-by-url
  */
 
-namespace BrianHenryIE\WC_Set_Gateway_By_URL\Includes;
+namespace BrianHenryIE\WC_Set_Gateway_By_URL;
 
-use BrianHenryIE\WC_Set_Gateway_By_URL\Admin\Admin;
-use BrianHenryIE\WC_Set_Gateway_By_URL\API\Settings_Interface;
+use BrianHenryIE\WC_Set_Gateway_By_URL\Admin\Admin_Assets;
+use BrianHenryIE\WC_Set_Gateway_By_URL\Settings_Interface;
 use BrianHenryIE\WC_Set_Gateway_By_URL\WooCommerce\Admin_Order_UI;
 use BrianHenryIE\WC_Set_Gateway_By_URL\WooCommerce\Settings_API;
 use BrianHenryIE\WC_Set_Gateway_By_URL\WooCommerce\WooCommerce_Init;
+use BrianHenryIE\WC_Set_Gateway_By_URL\WP_Includes\I18n;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\LoggerInterface;
 
@@ -32,8 +32,8 @@ use Psr\Log\LoggerInterface;
  * version of the plugin.
  *
  * @since      1.0.0
- * @package    BH_WC_Set_Gateway_By_URL
- * @subpackage BH_WC_Set_Gateway_By_URL/includes
+ * @package brianhenryie/bh-wc-set-gateway-by-url
+ *
  * @author     Brian Henry <BrianHenryIE@gmail.com>
  */
 class BH_WC_Set_Gateway_By_URL {
@@ -94,7 +94,7 @@ class BH_WC_Set_Gateway_By_URL {
 	 */
 	protected function define_admin_hooks(): void {
 
-		$admin = new Admin( $this->settings, $this->logger );
+		$admin = new Admin_Assets( $this->settings, $this->logger );
 		add_action( 'admin_enqueue_scripts', array( $admin, 'enqueue_styles' ) );
 
 	}

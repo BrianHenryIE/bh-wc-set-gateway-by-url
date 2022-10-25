@@ -2,11 +2,13 @@
 /**
  * The plugin's settings.
  *
- * @package BrianHenryIE\WC_Set_Gateway_By_URL\API
+ * @package brianhenryie/bh-wc-set-gateway-by-url
  */
 
 namespace BrianHenryIE\WC_Set_Gateway_By_URL\API;
 
+use BrianHenryIE\WC_Set_Gateway_By_URL\Admin\Admin_Assets;
+use BrianHenryIE\WC_Set_Gateway_By_URL\Settings_Interface;
 use BrianHenryIE\WC_Set_Gateway_By_URL\WP_Logger\Logger_Settings_Interface;
 use Psr\Log\LogLevel;
 
@@ -18,7 +20,7 @@ class Settings implements Settings_Interface, Logger_Settings_Interface {
 	/**
 	 * The plugin slug for CSS handle.
 	 *
-	 * @used-by Admin::enqueue_scripts()
+	 * @used-by Admin_Assets::enqueue_scripts()
 	 * @used-by BH_WP_Logger
 	 *
 	 * @return string
@@ -30,7 +32,7 @@ class Settings implements Settings_Interface, Logger_Settings_Interface {
 	/**
 	 * The plugin version for CSS version.
 	 *
-	 * @used-by Admin::enqueue_scripts()
+	 * @used-by Admin_Assets::enqueue_scripts()
 	 * @used-by BH_WP_Logger
 	 *
 	 * @return string
@@ -64,6 +66,7 @@ class Settings implements Settings_Interface, Logger_Settings_Interface {
 	/**
 	 * The main plugin file.
 	 *
+	 * @used-by Admin_Assets
 	 * @used-by BH_WP_Logger
 	 *
 	 * @return string

@@ -5,8 +5,7 @@
  * @link       http://github.com/BrianHenryIE/bh-wc-set-gateway-by-url/
  * @since      1.0.0
  *
- * @package    BH_WC_Set_Gateway_By_URL
- * @subpackage BH_WC_Set_Gateway_By_URL/woocommerce
+ * @package brianhenryie/bh-wc-set-gateway-by-url
  */
 
 namespace BrianHenryIE\WC_Set_Gateway_By_URL\WooCommerce;
@@ -19,8 +18,8 @@ use WC_Payment_Gateways;
  *
  * Exits early if it's not set; exits silently if it's not valid.
  *
- * @package    BH_WC_Set_Gateway_By_URL
- * @subpackage BH_WC_Set_Gateway_By_URL/admin
+ * @package brianhenryie/bh-wc-set-gateway-by-url
+ *
  * @author     Brian Henry <BrianHenryIE@gmail.com>
  */
 class WooCommerce_Init {
