@@ -14,6 +14,7 @@
 namespace BrianHenryIE\WC_Set_Gateway_By_URL;
 
 use BrianHenryIE\WC_Set_Gateway_By_URL\Admin\Admin_Assets;
+use BrianHenryIE\WC_Set_Gateway_By_URL\Admin\Plugins_Page;
 use BrianHenryIE\WC_Set_Gateway_By_URL\Settings_Interface;
 use BrianHenryIE\WC_Set_Gateway_By_URL\WooCommerce\Admin_Order_UI;
 use BrianHenryIE\WC_Set_Gateway_By_URL\WooCommerce\Settings_API;
@@ -66,8 +67,8 @@ class BH_WC_Set_Gateway_By_URL {
 
 		$this->set_locale();
 		$this->define_admin_hooks();
+		$this->define_plugins_page_hooks();
 		$this->define_woocommerce_hooks();
-
 	}
 
 	/**
@@ -97,6 +98,18 @@ class BH_WC_Set_Gateway_By_URL {
 		$admin = new Admin_Assets( $this->settings, $this->logger );
 		add_action( 'admin_enqueue_scripts', array( $admin, 'enqueue_styles' ) );
 
+	}
+	/**
+	 * Add a Settings link and a link to the plugin on GitHub.
+	 */
+	protected function define_plugins_page_hooks(): void {
+
+		$plugins_page = new Plugins_Page( $this->settings );
+
+		$plugin_basename = $this->settings->get_plugin_basename();
+
+		add_filter( "plugin_action_links_{$plugin_basename}", array( $plugins_page, 'action_links' ), 10, 4 );
+		add_filter( 'plugin_row_meta', array( $plugins_page, 'row_meta' ), 20, 4 );
 	}
 
 	/**
