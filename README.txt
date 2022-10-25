@@ -29,6 +29,10 @@ A WordPress filter exists so the text in the URL can be set to whatever you pref
 
 == Changelog ==
 
+= 1.1.1 =
+
+* Update project structure
+
 = 1.1.0 =
 
 * Also set WC_Payment_Gateway::chosen on all active gateways
