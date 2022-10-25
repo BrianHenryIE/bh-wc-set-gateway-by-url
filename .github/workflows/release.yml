@@ -68,22 +68,19 @@ jobs:
           sudo vendor/bin/wp config create --dbname=$TEST_SITE_DB_NAME --dbuser=$TEST_SITE_DB_USER --dbpass=$TEST_SITE_DB_PASSWORD --dbhost=127.0.0.1:${{ job.services.mysql.ports['3306'] }} --allow-root --extra-php="define( 'WP_DEBUG', true ); define( 'WP_DEBUG_LOG', true );"
 
       - name: Create plugin archive
+        id: create-plugin-archive
         run: |
           composer create-plugin-archive
-
-      - name: Save archive filepath
-        run: |
-          echo "{DIST_ARCHIVE_RELATIVE_FILEPATH}={$(ls -Art dist-archive/*.zip | tail -n 1)}" >> $GITHUB_STATE;
-          echo "{DIST_ARCHIVE_ABSOLUTE_FILEPATH}={$(pwd)/$(ls -Art dist-archive/*.zip | tail -n 1)}" >> $GITHUB_STATE;
+          echo $(ls -Art dist-archive/*.zip | tail -n 1)
+          echo "{DIST_ARCHIVE_RELATIVE_FILEPATH}={$(ls -Art dist-archive/*.zip | tail -n 1)}" >> $GITHUB_OUTPUT;
+          echo "{DIST_ARCHIVE_ABSOLUTE_FILEPATH}={$(pwd)/$(ls -Art dist-archive/*.zip | tail -n 1)}" >> $GITHUB_OUTPUT;
 
       - name: Debug workflow
-        run: |
-          echo ${{ env.DIST_ARCHIVE_ABSOLUTE_FILEPATH }};
-          echo ${{ env.DIST_ARCHIVE_RELATIVE_FILEPATH }};
+        run: echo "The selected color is ${{ steps.create-plugin-archive.outputs.DIST_ARCHIVE_ABSOLUTE_FILEPATH }}"
 
       - uses: meeDamian/github-release@2.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          files: ${{ env.DIST_ARCHIVE_RELATIVE_FILEPATH }}
+          files: ${{ steps.create-plugin-archive.outputs.DIST_ARCHIVE_ABSOLUTE_FILEPATH }}
           gzip: false
           allow_override: true
