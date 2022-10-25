@@ -71,9 +71,12 @@ jobs:
         run: |
           composer create-plugin-archive
 
+      - name: Save archive filepath
+        run: echo DIST_ARCHIVE_FILEPATH=$(pwd)/$(ls -Art dist-archive/*.zip | tail -n 1) >> $GITHUB_STATE
+
       - uses: meeDamian/github-release@2.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          files: $(ls -Art dist-archive/*.zip | tail -n 1)
+          files: ${{ env.DIST_ARCHIVE_FILEPATH }}
           gzip: false
           allow_override: true
