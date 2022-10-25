@@ -26,6 +26,9 @@ A WordPress filter exists so the text in the URL can be set to whatever you pref
 
 1. Demonstration link for using the plugin
 2. Demonstration link in context where it can be found
+2. The plugins.php entry
+2. Demonstration of the WooCommerce Customer Payment Page link being automatically updated
+
 
 == Changelog ==
 
