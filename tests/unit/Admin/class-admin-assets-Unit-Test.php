@@ -45,7 +45,7 @@ class Admin_Assets_Unit_Test  extends \Codeception\Test\Unit {
 		);
 
 		$css_file = $plugin_root_dir . '/assets/bh-wc-set-gateway-by-url-admin.css';
-		$css_url = 'http://example.org/wp-content/plugins/bh-wc-set-gateway-by-url/assets/bh-wc-set-gateway-by-url-admin.css';
+		$css_url  = 'http://example.org/wp-content/plugins/bh-wc-set-gateway-by-url/assets/bh-wc-set-gateway-by-url-admin.css';
 
 		\WP_Mock::userFunction(
 			'wp_enqueue_style',
