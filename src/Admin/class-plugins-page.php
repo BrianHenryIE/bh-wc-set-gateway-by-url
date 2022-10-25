@@ -5,7 +5,7 @@
  * @link
  * @since      1.2.0
  *
- * @package    brianhenryie/bh-wp-autologin-urls
+ * @package    brianhenryie/bh-wc-set-gateway-by-url
  */
 
 namespace BrianHenryIE\WC_Set_Gateway_By_URL\Admin;
