@@ -1,6 +1,6 @@
-=== Set Gateway by URL ===
+=== Set WooCommerce Payment Gateway by URL ===
 Contributors: BrianHenryIE
-Donate link: http://github.com/BrianHenryIE/bh-wc-set-gateway-by-url//
+Donate link: http://github.com/BrianHenryIE/bh-wc-set-gateway-by-url/
 Tags: woocommerce, payment-gateway, url
 Requires at least: 3.6.0
 Tested up to: 6.0
