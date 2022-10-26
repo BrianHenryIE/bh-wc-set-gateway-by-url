@@ -3,7 +3,7 @@ Contributors: BrianHenryIE
 Donate link: http://github.com/BrianHenryIE/bh-wc-set-gateway-by-url//
 Tags: woocommerce, payment-gateway, url
 Requires at least: 3.6.0
-Tested up to: 5.6
+Tested up to: 6.0
 Requires PHP: 7.4
 WC requires at least: 2.2
 WC tested up to: 5.1
