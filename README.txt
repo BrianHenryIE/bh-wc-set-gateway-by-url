@@ -32,6 +32,13 @@ A WordPress filter exists so the text in the URL can be set to whatever you pref
 
 == Changelog ==
 
+= 1.2.0 =
+
+* Add: link to WooCommerce/Settings/Payments as "Gateways" link on plugins.php
+* Add: wp_options setting for log level
+* Dev: change autoloader
+* Remove: build/dev files unintentionally included in archive
+
 = 1.1.1 =
 
 * Update project structure
