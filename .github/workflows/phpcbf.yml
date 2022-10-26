@@ -63,9 +63,7 @@ jobs:
         run: sudo apt-get install patch
 
       - name: Run composer install
-        uses: php-actions/composer@v6
-        with:
-          args: --ignore-platform-reqs
+        uses: composer install --ignore-platform-reqs
 
       - name: Create wpconfig ... the composer.json creation didn't work
         run: |
