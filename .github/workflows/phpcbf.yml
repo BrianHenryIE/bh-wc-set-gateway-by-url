@@ -64,7 +64,7 @@ jobs:
 
       - name: Run composer install
         continue-on-error: true
-        run: composer install --ignore-platform-reqs
+        run: composer install
 
       - name: Create wpconfig ... the composer.json creation didn't work
         run: |

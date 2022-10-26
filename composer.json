@@ -72,6 +72,7 @@
         "codeception/util-universalframework": "^1.0",
         "cweagans/composer-patches": "*",
         "dealerdirect/phpcodesniffer-composer-installer": "*",
+        "ext-dom": "*",
         "jaschilz/php-coverage-badger": "^2.0",
         "kporras07/composer-symlinks": "dev-master",
         "lucatume/wp-browser": "*",
@@ -97,6 +98,9 @@
             },
             "10up/wp_mock": {
                 "Add AnyObject matcher": "https://github.com/10up/wp_mock/pull/161.patch"
+            },
+            "wp-cli/dist-archive-command": {
+                "Add Increment Version": "patches/increment-version.diff"
             }
         },
         "strauss": {
