@@ -13,7 +13,6 @@
 
 namespace BrianHenryIE\WC_Set_Gateway_By_URL;
 
-
 $class_map_files = array(
 	__DIR__ . '/autoload-classmap.php',
 );
