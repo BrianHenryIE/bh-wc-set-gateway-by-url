@@ -32,6 +32,10 @@ A WordPress filter exists so the text in the URL can be set to whatever you pref
 
 == Changelog ==
 
+= 1.2.1 =
+
+* Fix: patches not applied to dependencies, fatal error
+
 = 1.2.0 =
 
 * Add: link to WooCommerce/Settings/Payments as "Gateways" link on plugins.php
