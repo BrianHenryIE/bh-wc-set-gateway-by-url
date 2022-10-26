@@ -59,6 +59,9 @@ jobs:
       #      - name: Create Composer auth.json
       #        run: php -r "file_put_contents( 'auth.json', json_encode( [ 'http-basic' => [ 'blog.brianhenry.ie' => [ 'username' => '"${{ secrets.COMPOSER_AUTH_SECRET }}"', 'password' => 'satispress' ] ] ] ) );"
 
+      - name: Install xmllint
+        run: sudo yum install patch
+
       - name: Run composer install
         uses: php-actions/composer@v6
         with:
