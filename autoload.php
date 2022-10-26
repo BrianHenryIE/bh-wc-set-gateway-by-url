@@ -13,7 +13,6 @@
 
 namespace BrianHenryIE\WC_Set_Gateway_By_URL;
 
-use BrianHenryIE\WC_Set_Gateway_By_URL\Pablo_Pacheco\WP_Namespace_Autoloader\WP_Namespace_Autoloader;
 
 $class_map_files = array(
 	__DIR__ . '/autoload-classmap.php',
@@ -40,6 +39,7 @@ unset( $class_map_files, $class_map_file, $class_map );
 // Load strauss classes after autoload-classmap.php so classes can be substituted.
 require_once __DIR__ . '/vendor-prefixed/autoload.php';
 
-$wpcs_autoloader = new WP_Namespace_Autoloader( array( 'classes_dir' => array( 'src' ) ) );
-$wpcs_autoloader->init();
-
+\BrianHenryIE\WC_Set_Gateway_By_URL\Alley_Interactive\Autoloader\Autoloader::generate(
+	'BrianHenryIE\\WC_Set_Gateway_By_URL',
+	__DIR__ . '/src',
+)->register();
