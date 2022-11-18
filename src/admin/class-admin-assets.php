@@ -55,7 +55,7 @@ class Admin_Assets {
 	 */
 	public function enqueue_styles(): void {
 
-		wp_enqueue_style( $this->settings->get_plugin_slug(), plugin_dir_url( $this->settings->get_plugin_basename() ) . '/assets/bh-wc-set-gateway-by-url-admin.css', array(), $this->settings->get_plugin_version(), 'all' );
+		wp_enqueue_style( $this->settings->get_plugin_slug(), plugin_dir_url( $this->settings->get_plugin_basename() ) . 'assets/bh-wc-set-gateway-by-url-admin.css', array(), $this->settings->get_plugin_version(), 'all' );
 	}
 
 }
