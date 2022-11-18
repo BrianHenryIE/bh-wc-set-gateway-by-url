@@ -39,7 +39,7 @@ class Admin_Assets_Unit_Test  extends \Codeception\Test\Unit {
 		\WP_Mock::userFunction(
 			'plugin_dir_url',
 			array(
-				'return' => 'http://example.org/wp-content/plugins/bh-wc-set-gateway-by-url',
+				'return' => 'http://example.org/wp-content/plugins/bh-wc-set-gateway-by-url/',
 			)
 		);
 
