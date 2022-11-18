@@ -80,7 +80,7 @@ jobs:
         run: composer run-script post-install-cmd
 
       - name: Check database
-        run: vendor/bin/wp db check
+        run: vendor/bin/wp db check --debug
 
       - name: Allow writing to wp-content
         run: sudo chmod -R a+w wp-content
