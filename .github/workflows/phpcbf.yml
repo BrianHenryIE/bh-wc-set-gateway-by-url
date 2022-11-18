@@ -39,7 +39,7 @@ jobs:
 
       - name: Update environment config for GitHub Actions
         env:
-          PLUGIN_SLUG: bh-wc-set-gateway-by-url
+          PLUGIN_SLUG: ${{ github.event.repository.name }}
         run: |
           find . -depth \( -name '.env.testing' \) -exec sed -i "s/TEST_SITE_DB_HOST=\"127.0.0.1\"/TEST_SITE_DB_HOST=\"127.0.0.1:${{ job.services.mysql.ports['3306'] }}\"/g" {} +
           find . -depth \( -name '.env.testing' -o -name '*.cest' \) -exec sed -i "s/localhost:8080\/${{ env.PLUGIN_SLUG }}/localhost:8080/g" {} +
