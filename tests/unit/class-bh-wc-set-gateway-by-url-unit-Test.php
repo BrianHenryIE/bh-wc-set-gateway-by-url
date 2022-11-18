@@ -8,6 +8,7 @@
 namespace BrianHenryIE\WC_Set_Gateway_By_URL;
 
 use BrianHenryIE\WC_Set_Gateway_By_URL\Admin\Admin_Assets;
+use BrianHenryIE\WC_Set_Gateway_By_URL\Admin\Plugins_Page;
 use BrianHenryIE\WC_Set_Gateway_By_URL\Settings_Interface;
 use BrianHenryIE\WC_Set_Gateway_By_URL\WooCommerce\Settings_API;
 use BrianHenryIE\WC_Set_Gateway_By_URL\WooCommerce\WooCommerce_Init;
@@ -31,6 +32,7 @@ class BH_WC_Set_Gateway_By_URL_Unit_Test extends \Codeception\Test\Unit {
 	}
 
 	/**
+	 * @covers ::__construct
 	 * @covers ::set_locale
 	 */
 	public function test_set_locale_hooked() {
@@ -61,31 +63,38 @@ class BH_WC_Set_Gateway_By_URL_Unit_Test extends \Codeception\Test\Unit {
 
 		new BH_WC_Set_Gateway_By_URL( $settings, $logger );
 	}
-	//
-	// **
-	// * @covers ::define_plugins_page_hooks
-	// */
-	// public function test_plugins_page_hooks() {
-	//
-	// $this->markTestIncomplete();
-	//
-	// \WP_Mock::expectFilterAdded(
-	// 'plugin_action_links_bh-wc-set-gateway-by-url/bh-wc-set-gateway-by-url.php',
-	// array( new AnyInstance( Plugins_Page::class ), 'add_settings_action_link' )
-	// );
-	//
-	// \WP_Mock::expectFilterAdded(
-	// 'plugin_action_links_bh-wc-set-gateway-by-url/bh-wc-set-gateway-by-url.php',
-	// array( new AnyInstance( Plugins_Page::class ), 'add_orders_action_link' )
-	// );
-	//
-	// $settings = $this->makeEmpty( Settings_Interface::class, array(
-	// 'get_plugin_basename' => 'bh-wc-set-gateway-by-url/bh-wc-set-gateway-by-url.php'
-	// ));
-	// $logger = new NullLogger();
-	//
-	// new BH_WC_Set_Gateway_By_URL( $settings, $logger );
-	// }
+
+	/**
+	 * @covers ::define_plugins_page_hooks
+	 */
+	public function test_plugins_page_hooks() {
+
+		$plugin_basename = 'bh-wc-set-gateway-by-url/bh-wc-set-gateway-by-url.php';
+
+		\WP_Mock::expectFilterAdded(
+			"plugin_action_links_{$plugin_basename}",
+			array( new AnyInstance( Plugins_Page::class ), 'action_links' ),
+			10,
+			4
+		);
+
+		\WP_Mock::expectFilterAdded(
+			'plugin_row_meta',
+			array( new AnyInstance( Plugins_Page::class ), 'row_meta' ),
+			20,
+			4
+		);
+
+		$settings = $this->makeEmpty(
+			Settings_Interface::class,
+			array(
+				'get_plugin_basename' => $plugin_basename,
+			)
+		);
+		$logger   = new NullLogger();
+
+		new BH_WC_Set_Gateway_By_URL( $settings, $logger );
+	}
 
 	/**
 	 * @covers ::define_woocommerce_hooks
